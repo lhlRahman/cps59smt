@@ -6,908 +6,2400 @@ import { useSpring, animated as a } from 'react-spring';
 const flashcardsData = [
   {
     "slide_number": 1,
-    "question": "What course and instructor are associated with learning about interesting uses of crypto technology in Fall 2024?",
-    "answer": "CPS571 Introduction to Cyber-Security, taught by Dr. Jelena Mišić."
-  },
-  {
-    "slide_number": 2,
-    "question": "What are the key elements of a successful protocol for buying tangerines?",
-    "answer": "The protocol must be clear and involve the following steps: the customer requests a tangerine, the merchant provides it, the customer pays, and the merchant gives change. All parties must understand and follow these unambiguous steps, ensuring the process ends without endless loops."
-  },
-  {
-    "slide_number": 3,
-    "question": "What are potential risks in the basic car-purchase protocol between Alice and Bob?",
-    "answer": "Risks include Bob giving a bad check and Alice providing a stolen car with a forged title."
-  },
-  {
-    "slide_number": 4,
-    "question": "What role does a trusted third party, like a bank, play in a transaction involving a certified check?",
-    "answer": "The bank certifies the check by putting enough of the issuer's money on hold, which helps prevent fraud and protects the recipient by ensuring that the check is backed by sufficient funds."
-  },
-  {
-    "slide_number": 5,
-    "question": "What role does the lawyer play in the transaction between Alice and Bob regarding the car sale?",
-    "answer": "The lawyer acts as a trusted third party by holding the title and keys from Alice and the check from Bob. The lawyer deposits the check and, after verifying it clears and Bob registers the car, transfers the title to Bob. If the check doesn't clear, the lawyer returns the title to Alice. If Bob can't obtain a clean title, he provides proof to the lawyer to get his money back."
-  },
-  {
-    "slide_number": 6,
-    "question": "What role do protocols play in digital security, and what vulnerabilities do they face?",
-    "answer": "Protocols, used across the internet, cellular phones, TVs, and smart cards, employ cryptography to secure communications, authenticate identities, ensure fairness, and provide audits. However, they are often subject to various attacks, which can sometimes succeed."
-  },
-  {
-    "slide_number": 7,
-    "question": "What are passive and active attacks in the context of protocol security, and what is a man-in-the-middle attack?",
-    "answer": "Passive attacks involve listening and learning without altering the communication, but their value is uncertain. Active attacks involve inserting, deleting, or modifying messages. A man-in-the-middle attack occurs when an attacker, like Eve, intercepts and alters messages between two parties, such as Alice and Bob."
-  },
-  {
-    "slide_number": 8,
-    "question": "What is a potential vulnerability of a public-key authentication protocol that is secure against passive eavesdropping and active insertion/deletion attacks?",
-    "answer": "The protocol may not be secure against a malicious host, which can occur in real life, allowing fraudulent sites (e.g., phony bank sites) to steal user credentials and misuse them."
-  },
-  {
-    "slide_number": 9,
-    "question": "Why is it challenging to determine the quality of cryptographic protocols compared to other technologies like mobile phones or cars?",
-    "answer": "Unlike technologies where performance can be measured objectively (e.g., speed), cryptographic protocols lack objective measures of quality. They must be examined by experts to identify weaknesses, and even then, vulnerabilities can be overlooked. Multiple expert reviews are necessary to distinguish good cryptography from bad cryptography."
-  },
-  {
-    "slide_number": 10,
-    "question": "Why is it preferable to use old and public protocols over new and proprietary ones in network security?",
-    "answer": "Old and public protocols like IPSec are preferred because they are extensively scrutinized and tested over time, whereas proprietary protocols may have unknown vulnerabilities, as demonstrated by the flaws found in Microsoft's PPTP in 1998."
-  },
-  {
-    "slide_number": 11,
-    "question": "Why is following established methods important in cryptography?",
-    "answer": "Following established methods in cryptography provides security, as new methods are often suspect and unverified, similar to trusting a doctor without credentials."
-  },
-  {
-    "slide_number": 12,
-    "question": "What are some key concerns addressed by computer security in relation to software and data integrity?",
-    "answer": "Computer security addresses ensuring the correctness and integrity of software and data, preventing unauthorized modification, and enforcing licensing rules such as restricting software copying, limiting the number of users and machines, and controlling usage duration."
-  },
-  {
-    "slide_number": 13,
-    "question": "What are the key concepts related to protecting information and systems in computing?",
-    "answer": "The key concepts include:\n- **Privacy and Confidentiality:** Preventing unauthorized access to sensitive information.\n- **Integrity:** Ensuring data remains as the last authorized modifier left it.\n- **Data Integrity:** Ensuring data hasn't been deleted or altered without permission.\n- **Software Integrity:** Ensuring software programs haven't been altered.\n- **Availability:** Ensuring systems work as expected when needed."
-  },
-  {
-    "slide_number": 14,
-    "question": "How do confidentiality, availability, and integrity relate to access control, and why has the need for it evolved over time?",
-    "answer": "Confidentiality, availability, and integrity are fundamentally about access control, ensuring only authorized individuals can perform their permitted actions. Initially, computers didn't require strict access control, but as technology evolved, the need for it has become essential beyond just computing, reflecting broader security challenges."
-  },
-  {
-    "slide_number": 15,
-    "question": "What are the key components of access control and the specific access permissions in Unix systems?",
-    "answer": "Access control involves defining what \"subjects\" (users or processes) can do to \"objects\" (files or resources). It's not just all-or-nothing; there are various access permissions. In Unix systems, the three possible access permissions are read (viewing the file), write (modifying the file), and execute (running the file). A user may have permission to read a file without modifying it, modify it without reading it, or execute it without the ability to read or write it."
-  },
-  {
-    "slide_number": 16,
-    "question": "What is the role of 'groups' in Unix access controls, and why are they important?",
-    "answer": "In Unix, 'groups' allow all members to share the same set of permissions, simplifying the complex matrix of access controls by reducing the need to individually assign permissions to each user for every file."
-  },
-  {
-    "slide_number": 17,
-    "question": "What is an Access Control List (ACL), and what are the pros and cons of using it for managing permissions?",
-    "answer": "An Access Control List (ACL) is a way to manage access by associating a list of who has access with each object. It is beneficial for users who can manage their own permissions, but less effective when permissions are centrally managed. While permissions are permanent, ACLs may lack timed validity, and run-time permission checking can be resource-intensive."
-  },
-  {
-    "slide_number": 18,
-    "question": "What is the Bell-LaPadula model, and what are its main principles regarding data access in multilevel security systems?",
-    "answer": "The Bell-LaPadula model is a security model used in government and military contexts, emphasizing the \"need to know\" principle. It defines clearances for subjects and classifications for objects across levels like Top Secret, Secret, Confidential, and Unclassified. The main rules are \"no read up\" (users cannot read data above their clearance) and \"no write down\" (users cannot write data below their clearance). This prevents illicit information flow, allowing users to write documents they cannot read."
-  },
-  {
-    "slide_number": 19,
-    "question": "What are the limitations of the Bell-La Padula model in access control?",
-    "answer": "The Bell-La Padula model focuses on mandatory access controls (MAC) and emphasizes confidentiality over other aspects of security. It assumes static data classifications without addressing how they are managed or changed. Additionally, it does not accommodate situations where users need access to unauthorized data, requiring object sanitization in such cases."
-  },
-  {
-    "slide_number": 20,
-    "question": "What are the key integrity models and components discussed in CPS 633, and how do they ensure data integrity?",
-    "answer": "The key integrity models in CPS 633 include the Chinese Wall model and the Clark-Wilson model. The Chinese Wall model prevents conflicts of interest by managing data from mutually distrustful users. The Clark-Wilson model focuses on data integrity in commercial applications through certification and enforcement rules. Major components ensuring integrity are separation of duty (e.g., developers cannot install programs), separation of function (e.g., developers cannot use unsanitized end-user data), and auditing through careful logging."
-  },
-  {
-    "slide_number": 21,
-    "question": "What are some key elements of Clinical Information Systems Security Policy covered in CPS 633?",
-    "answer": "Key elements include ensuring patient confidentiality, authenticating records and annotators, preventing unauthorized changes to records, using ORCON for digital rights management (combining MAC and DAC), and implementing Role-Based Access Control (RBAC) where access is determined by the subject's role, not individual identity."
-  },
-  {
-    "slide_number": 22,
-    "question": "Why is security often implemented at the operating system or hardware level?",
-    "answer": "Implementing security at the lowest layer, such as the operating system or hardware, is effective because it aligns with the Bell-LaPadula policy (no write down and no read up), prevents compromising security by attacking a lower layer, simplifies adding security at the system's core, and often results in faster performance. Operating system security has been a research focus for decades."
-  },
-  {
-    "slide_number": 23,
-    "question": "What are the key components of operating system security?",
-    "answer": "The key components of operating system security include the reference monitor, which halts processes to determine if OS calls should be allowed, the trusted computing base, which encompasses all protection mechanisms in the computer responsible for enforcing security policies, and the secure kernel, which implements the reference monitor concept within the trusted computing base."
-  },
-  {
-    "slide_number": 24,
-    "question": "What are the limitations of formal security models in software development?",
-    "answer": "Formal security models offer theoretical frameworks but are limited in practice. They cannot prove a system's security properties and only assure security against attackers who adhere to the model. Effective attackers often devise new methods beyond these models, thus real products typically integrate ideas from formal models without fully relying on them."
-  },
-  {
-    "slide_number": 25,
-    "question": "What is the primary focus of Chapter 10 in \"Computer Security: The Art and Science\" by M. Bishop?",
-    "answer": "Chapter 10 covers key concepts and advancements in technology related to cyber-security, as introduced in CPS571 by Dr. Jelena Mišić."
-  },
-  {
-    "slide_number": 26,
-    "question": "What is a potential risk when using symmetric key encryption for message authentication?",
-    "answer": "The risk is that if the key is shared with multiple people, it becomes difficult to verify the true sender of the message, as anyone with the key can create an authentic-looking message."
-  },
-  {
-    "slide_number": 27,
-    "question": "What is a Message Authentication Code (MAC) and what is its primary purpose?",
-    "answer": "A MAC uses a shared secret key, similar to symmetric encryption algorithms, and employs a hash function to verify message integrity, indicating if the message has been tampered with, but it does not protect privacy."
-  },
-  {
-    "slide_number": 28,
-    "question": "What are one-way hash functions and their key characteristics?",
-    "answer": "One-way hash functions use a one-way function to produce a message digest (fingerprint) that is simple to compute but infeasible to reverse. The digest has a fixed length, regardless of the message length. Cryptographic hash functions are faster in software than encryption algorithms like DES, and their code is widely available."
-  },
-  {
-    "slide_number": 29,
-    "question": "How has the storage of Unix passwords evolved over time to enhance security?",
-    "answer": "Initially, Unix passwords were stored in plain text in /etc/passwd. Later, they stored hashed passwords instead. To further enhance security, a 'salt' (random string) was added to the password before hashing. Currently, password hashes are stored in /etc/shadow, although accessing this file typically requires significant system access."
-  },
-  {
-    "slide_number": 30,
-    "question": "What is a cryptographic checksum and how is it used in data transmission?",
-    "answer": "A cryptographic checksum is a mathematical function that generates a set of k bits from a set of n bits (where k ≤ n) to verify if a message was altered during transit. An example is the ASCII parity bit, where the 8th bit ensures even parity (even number of 1 bits) or odd parity (odd number of 1 bits)."
-  },
-  {
-    "slide_number": 31,
-    "question": "How can parity be used to check if the character \"10111101\" was received correctly when using even and odd parity?",
-    "answer": "For even parity, \"10111101\" (6 ones) is correct as it maintains even parity. For odd parity, it's incorrect because it has an even number of ones. Two bits would need to change to preserve parity if garbled."
-  },
-  {
-    "slide_number": 32,
-    "question": "What are cryptographic checksums, and how do collision and birthday attacks differ in their computational infeasibility?",
-    "answer": "A cryptographic checksum is a function h: A->B, easy to compute for any x∈A but infeasible to reverse (find x from y∈B). Collision attacks are infeasible attempts to find two different documents x, x'∈A with the same hash (h(x) = h(x')). Birthday attacks, more difficult than collision attacks, involve finding a different document with the same hash as a given target document."
-  },
-  {
-    "slide_number": 33,
-    "question": "What is the difference between a collision attack and a birthday attack in terms of probabilities and required number of people?",
-    "answer": "In a collision attack, 23 people are needed for a probability greater than 0.5 that any two share a birthday. In a birthday attack, 253 people are needed for a probability greater than 0.5 that someone shares your specific birthday."
-  },
-  {
-    "slide_number": 34,
-    "question": "What is a collision in the context of cryptographic hash functions, and how does the size of the hash affect the probability of a collision?",
-    "answer": "A collision occurs when two different inputs, x and x', produce the same hash value (h(x) = h(x')). The probability of a collision is inversely proportional to the size of the hash; larger hash sizes reduce the likelihood of collisions. For example, with 32 files and only 8 possible hash values, at least one hash value will correspond to 4 files."
-  },
-  {
-    "slide_number": 35,
-    "question": "What is the difference between keyed and keyless cryptographic checksums, and can you give examples of each?",
-    "answer": "Keyed cryptographic checksums require a cryptographic key to generate the checksum. An example is AES in chaining mode, which uses a key to encipher the message and derives the checksum from the last n-bits. Keyless cryptographic checksums do not require a key. Examples include SHA-512 and SHA-3. HMAC is a combination of a hash function with a key, used for keyless cryptographic checksums."
-  },
-  {
-    "slide_number": 36,
-    "question": "What is MD5, and what are its key characteristics?",
-    "answer": "MD5 is a hash function designed by Ronald Rivest, with a digest size of 128 bits and a block size of 512 bits. It uses the Merkle-Damgård construction with 4 rounds. Although broken, it is still studied for its importance and can be used as a checksum to verify data integrity against unintentional corruption."
-  },
-  {
-    "slide_number": 37,
-    "question": "What is the process of the MD5 algorithm in handling a message?",
-    "answer": "MD5 processes a variable-length message into a 128-bit fixed-length output by breaking the message into 512-bit blocks. The message is padded to be divisible by 512. The algorithm operates on a 128-bit state (four 32-bit words: A, B, C, D) initialized to fixed constants. Each 512-bit block modifies the state through four stages, each with 16 operations based on a non-linear function F."
-  },
-  {
-    "slide_number": 38,
-    "question": "What are the key components and operations involved in one iteration of the MD5 compression function?",
-    "answer": "In one iteration of the MD5 compression function, the key components are 32-bit words A, B, C, D of the state, a nonlinear function F, and operations involving left bit rotation (⋘n) and addition modulo 2^32 (⊞). Each iteration uses a 32-bit message block (Mi) and a unique 32-bit constant (Ki)."
-  },
-  {
-    "slide_number": 39,
-    "question": "How many different functions are used in each round of the MD5 hash function?",
-    "answer": "There are four possible functions, with a different one used in each round of the MD5 hash function."
-  },
-  {
-    "slide_number": 40,
-    "question": "What is SHA-1, and why is it significant in cryptography despite being broken?",
-    "answer": "SHA-1 (Secure Hash Algorithm 1) is a hash function producing a 160-bit hash value, known as a message digest, typically rendered as 40 hexadecimal digits. Designed by the U.S. NSA, it is a Federal Information Processing Standard. Although cryptographically broken, SHA-1 remains widely used in security applications and protocols like TLS, SSL, PGP, SSH, S/MIME, and IPsec. It features a digest size of 160 bits, block size of 512 bits, and 80 rounds."
-  },
-  {
-    "slide_number": 41,
-    "question": "What are the key components and operations involved in one iteration of the SHA-1 compression function?",
-    "answer": "In one iteration of the SHA-1 compression function, the components include 32-bit words A, B, C, D, and E of the state, a nonlinear function F, the expanded message word Wt, and the round constant Kt. The operations involve a left bit rotation denoted by ⋘n and addition modulo 2^32 denoted by ⊞. The function F and the rotation value n vary for each operation."
-  },
-  {
-    "slide_number": 42,
-    "question": "What is the primary defense mechanism used in HMAC to prevent message tampering by attackers?",
-    "answer": "HMAC defends against message tampering by using a keyed cryptographic checksum, which involves creating a hash using a cryptographic key (k') and constants (ipad and opad) to secure the data. The process uses exclusive or (XOR) operations and concatenation with the message, ensuring the hash cannot be recomputed by an attacker without the key."
-  },
-  {
-    "slide_number": 43,
-    "question": "What determines the strength of HMAC and what are some vulnerabilities associated with it?",
-    "answer": "The strength of HMAC depends on the strength of the hash function used. Vulnerabilities exist where attacks on HMAC-MD4, HMAC-MD5, HMAC-SHA-0, and HMAC-SHA-1 can recover partial or full keys."
-  },
-  {
-    "slide_number": 44,
-    "question": "What are the key aspects of message integrity in networking?",
-    "answer": "Message integrity ensures that: 1) the content hasn't been altered, 2) the source is verified, 3) the message hasn't been replayed, and 4) the sequence of messages is maintained."
-  },
-  {
-    "slide_number": 45,
-    "question": "What is an alternative to HMAC for ensuring message authentication and integrity without encryption, and how is it represented?",
-    "answer": "An alternative to HMAC is the \"keyed hash,\" which uses a shared secret key for authentication and integrity. It is represented as MDm = H(s||m), and the message is sent as m||MDm."
-  },
-  {
-    "slide_number": 46,
-    "question": "Who teaches the CPS571 Introduction to Cyber-Security course in Fall 2024?",
+    "type": "flashcard",
+    "question": "Who is the instructor for CPS571 Introduction to Cyber-Security in Fall 2024?",
     "answer": "Dr. Jelena Mišić"
   },
   {
+    "slide_number": 2,
+    "type": "flashcard",
+    "question": "What is the name of the instructor for this course?",
+    "answer": "Prof. Jelena Mišić, PhD"
+  },
+  {
+    "slide_number": 2,
+    "type": "flashcard",
+    "question": "Where is the instructor's office located?",
+    "answer": "ENG -261, George Vari Engineering Building"
+  },
+  {
+    "slide_number": 2,
+    "type": "flashcard",
+    "question": "When are the instructor's office hours?",
+    "answer": "Thursday 3pm – 4pm, or by appointment (via email)"
+  },
+  {
+    "slide_number": 3,
+    "type": "flashcard",
+    "question": "What are the key topics covered in this cybersecurity course?",
+    "answer": "The course covers key cybersecurity concepts and practices, organizational security landscape, foundational security principles, organization risk management, adversarial thinking, data security, system security, internet security, cyber hygiene, and personal device protection."
+  },
+  {
+    "slide_number": 3,
+    "type": "flashcard",
+    "question": "Which textbooks are suggested for the course, and are they mandatory?",
+    "answer": "The suggested textbooks are 'Computer Security: Art and Science' by Matt Bishop, 'Secrets and Lies: Digital Security in a Networked World' by Bruce Schneier, and 'Applied Cryptography: Protocols, Algorithms and Source Code in C' by Bruce Schneier. None of them are mandatory."
+  },
+  {
+    "slide_number": 4,
+    "type": "flashcard",
+    "question": "What are the main tenets of security in cybersecurity?",
+    "answer": "Confidentiality, integrity, authentication, non-repudiation, and others."
+  },
+  {
+    "slide_number": 4,
+    "type": "flashcard",
+    "question": "What is the role of security technology in cybersecurity?",
+    "answer": "To understand its basic principles and limitations."
+  },
+  {
+    "slide_number": 4,
+    "type": "flashcard",
+    "question": "Why is the human factor important in cybersecurity?",
+    "answer": "Because it is the main contributor to cybersecurity challenges."
+  },
+  {
+    "slide_number": 5,
+    "type": "flashcard",
+    "question": "What percentage of the total grade does Midterm Test 1 account for?",
+    "answer": "27%"
+  },
+  {
+    "slide_number": 5,
+    "type": "flashcard",
+    "question": "On what date is Midterm Test 2 scheduled?",
+    "answer": "Thursday, November 19, 2024"
+  },
+  {
+    "slide_number": 5,
+    "type": "flashcard",
+    "question": "How much does the final exam contribute to the overall grade?",
+    "answer": "45%"
+  },
+  {
+    "slide_number": 6,
+    "type": "flashcard",
+    "question": "Why is computer security becoming increasingly important?",
+    "answer": "As we become more connected through internet, mobile phones, smart TVs, and other smart devices, the importance of computer security increases to protect these connections."
+  },
+  {
+    "slide_number": 6,
+    "type": "flashcard",
+    "question": "What should you critically evaluate about vendors' security claims?",
+    "answer": "You should question the truth and sense behind claims like 'this system is secure' or 'this product makes your network secure,' and assess if they hold true."
+  },
+  {
+    "slide_number": 6,
+    "type": "flashcard",
+    "question": "What question should you ask when evaluating statements about online payment security?",
+    "answer": "You should ask if the statement 'We secure online payments' is true and makes sense, and consider the actual security measures in place."
+  },
+  {
+    "slide_number": 7,
+    "type": "flashcard",
+    "question": "What is the main reason vendors cannot guarantee the security of a system?",
+    "answer": "Vendors focus on the security of the product, not the overall system."
+  },
+  {
+    "slide_number": 7,
+    "type": "flashcard",
+    "question": "What important question should be asked regarding security?",
+    "answer": "The important question is 'secure from what?' or 'secure from whom?'"
+  },
+  {
+    "slide_number": 7,
+    "type": "flashcard",
+    "question": "Why might a security product not be faulty even if it fails to protect in certain scenarios?",
+    "answer": "Because it was not designed to defend against those specific scenarios."
+  },
+  {
+    "slide_number": 8,
+    "type": "flashcard",
+    "question": "What is the main problem mentioned in Slide 8?",
+    "answer": "The main problem is making decisions about what the system is to be defended against and what threats to ignore without proper consideration."
+  },
+  {
+    "slide_number": 8,
+    "type": "flashcard",
+    "question": "Why is it important to consider many factors in decision-making regarding system defense?",
+    "answer": "Proper consideration is needed to ensure that the decisions made are effective and do not overlook critical threats."
+  },
+  {
+    "slide_number": 8,
+    "type": "flashcard",
+    "question": "What is implied by the question 'system, you said?' in the context of the slide?",
+    "answer": "It implies a need for clarity and understanding of what constitutes the 'system' that needs defending."
+  },
+  {
+    "slide_number": 9,
+    "type": "flashcard",
+    "question": "What is a system, and how is it viewed differently in Eastern and Western philosophies?",
+    "answer": "A system is a concept that views the world as a single entity with various components. Eastern philosophers have long seen the world as a single system, while Westerners traditionally segmented the world into separate interacting parts."
+  },
+  {
+    "slide_number": 9,
+    "type": "flashcard",
+    "question": "How did engineering advancements change the concept of machines into systems?",
+    "answer": "Engineering became sophisticated enough to create machines that function together as systems. A simple machine like a pulley became part of a complex system, like an elevator, which consists of multiple interacting machines."
+  },
+  {
+    "slide_number": 9,
+    "type": "flashcard",
+    "question": "How do systems interact with each other in the context of machines and networks?",
+    "answer": "Systems interact in ways such as an elevator interacting with a building’s electrical, fire control, and environmental control systems. Similarly, computers form networks, which interact to create larger networks."
+  },
+  {
+    "slide_number": 10,
+    "type": "flashcard",
+    "question": "What are some key properties of systems?",
+    "answer": "Systems have components, feedback loops, mean times between failure, infrastructure, interact with each other, have emergent properties, and contain bugs."
+  },
+  {
+    "slide_number": 10,
+    "type": "flashcard",
+    "question": "Why was object-oriented programming developed?",
+    "answer": "Object-oriented programming was developed to deal with the complexity of digital systems."
+  },
+  {
+    "slide_number": 10,
+    "type": "flashcard",
+    "question": "How is a bug different from a malfunction?",
+    "answer": "A bug is a particular kind of failure and an emergent property of a system, whereas a malfunction refers to machines breaking or failing to work properly."
+  },
+  {
+    "slide_number": 11,
+    "type": "flashcard",
+    "question": "How do connectivity, complexity, and extendibility contribute to security issues?",
+    "answer": "Connectivity, complexity, and extendibility can all contribute to security vulnerabilities because everything is interconnected, systems are increasingly complex, and interactions are not always transparent or secure."
+  },
+  {
+    "slide_number": 11,
+    "type": "flashcard",
+    "question": "Why might an operating system with hundreds of millions of lines of code, like Windows, be considered insecure?",
+    "answer": "An operating system with hundreds of millions of lines of code may be considered insecure because the complexity increases the potential for bugs and security vulnerabilities."
+  },
+  {
+    "slide_number": 11,
+    "type": "flashcard",
+    "question": "What are the risks associated with the interaction of interconnected devices?",
+    "answer": "The risks include not knowing who built the devices or how secure the connections are, which can lead to vulnerabilities and potential security breaches."
+  },
+  {
+    "slide_number": 12,
+    "type": "flashcard",
+    "question": "Why is it challenging to secure complex systems like the Internet?",
+    "answer": "Because they are inherently complex systems with design trade-offs, unseen variables, imperfect implementations, and faulty installations."
+  },
+  {
+    "slide_number": 12,
+    "type": "flashcard",
+    "question": "What is the difference between theory and practice in security?",
+    "answer": "In theory, systems can be designed to be secure, but in practice, real-world constraints and imperfections make it difficult to implement them securely."
+  },
+  {
+    "slide_number": 12,
+    "type": "flashcard",
+    "question": "What are some areas of security theory mentioned in the slide?",
+    "answer": "The theory of cryptography, the theory of firewalls and intrusion detection, and the theory of biometrics."
+  },
+  {
+    "slide_number": 13,
+    "type": "flashcard",
+    "question": "Who is Dan Geer and what did he investigate?",
+    "answer": "Dan Geer is a security expert who investigated the correlation between CERT vulnerability numbers, the number of hosts, and mega lines of code (MLOC)."
+  },
+  {
+    "slide_number": 13,
+    "type": "flashcard",
+    "question": "How did Dan Geer define 'Opportunity' in his investigations?",
+    "answer": "Dan Geer defined 'Opportunity' as the normalized product of the number of Internet hosts and the number of vulnerabilities."
+  },
+  {
+    "slide_number": 13,
+    "type": "flashcard",
+    "question": "What did Dan Geer normalize in his analysis?",
+    "answer": "Dan Geer normalized the lines-of-code growth over time against its own median over three years, as well as data about incidents."
+  },
+  {
+    "slide_number": 14,
+    "type": "flashcard",
+    "question": "What is the significance of identifying opportunities for growth in a business context?",
+    "answer": "Identifying opportunities for growth helps businesses expand their market presence, increase revenue, and achieve long-term sustainability by leveraging new markets, products, or strategies."
+  },
+  {
+    "slide_number": 15,
+    "type": "flashcard",
+    "question": "What does MLOC stand for in the context of software metrics?",
+    "answer": "MLOC stands for Million Lines of Code."
+  },
+  {
+    "slide_number": 15,
+    "type": "flashcard",
+    "question": "Why is tracking incidents important in software development?",
+    "answer": "Tracking incidents is important to identify and address software issues, improve system reliability, and enhance user satisfaction."
+  },
+  {
+    "slide_number": 16,
+    "type": "flashcard",
+    "question": "What does MLOCs3 represent?",
+    "answer": "MLOCs3 represents MLOC smoothed via a three-year moving average."
+  },
+  {
+    "slide_number": 16,
+    "type": "flashcard",
+    "question": "How is MLOCs3^2+1 calculated?",
+    "answer": "MLOCs3^2+1 is the square of the average, shifted one year to the right, and represents complexity proportional to the square of MLOC."
+  },
+  {
+    "slide_number": 17,
+    "type": "flashcard",
+    "question": "What is the relationship between the number of vulnerabilities and the growth of the code base size?",
+    "answer": "The number of vulnerabilities is very similar to the growth of the code base size."
+  },
+  {
+    "slide_number": 17,
+    "type": "flashcard",
+    "question": "How is the number of incidents related to the complexity of the code base?",
+    "answer": "The number of incidents is very similar to the complexity of the code base, shifted one year."
+  },
+  {
+    "slide_number": 17,
+    "type": "flashcard",
+    "question": "Why is it unlikely that the similarity between code base size growth and vulnerabilities is a coincidence?",
+    "answer": "Because someone has to understand the code base and identify possible vulnerabilities before launching an attack."
+  },
+  {
+    "slide_number": 18,
+    "type": "flashcard",
+    "question": "What parallels exist between threats in the digital world and the physical world?",
+    "answer": "Threats in the digital world mirror those in the physical world, such as embezzlement, robbery, and invasion of privacy."
+  },
+  {
+    "slide_number": 18,
+    "type": "flashcard",
+    "question": "What are some examples of cyberspace crimes that reflect physical world crimes?",
+    "answer": "Examples include theft, racketeering, vandalism, voyeurism, exploitation, extortion, con games, and fraud."
+  },
+  {
+    "slide_number": 18,
+    "type": "flashcard",
+    "question": "How can threats in the digital world lead to physical harm?",
+    "answer": "Cyberstalking and attacks against systems like air traffic control can lead to physical harm."
+  },
+  {
+    "slide_number": 19,
+    "type": "flashcard",
+    "question": "Do digital system attacks resemble their physical counterparts?",
+    "answer": "Yes, digital system attacks often mimic those in the physical world."
+  },
+  {
+    "slide_number": 19,
+    "type": "flashcard",
+    "question": "Can past events help predict future trends in digital attacks?",
+    "answer": "Yes, historical patterns can provide insights into future digital attack trends."
+  },
+  {
+    "slide_number": 19,
+    "type": "flashcard",
+    "question": "Who are the main operators of the malware industry?",
+    "answer": "The malware industry is operated by both criminals and governments."
+  },
+  {
+    "slide_number": 20,
+    "type": "flashcard",
+    "question": "How does cyberspace change the nature of attacks compared to the physical world?",
+    "answer": "In cyberspace, attacks are more common, more widespread, harder to track, capture, and convict perpetrators, and their effects are more devastating."
+  },
+  {
+    "slide_number": 20,
+    "type": "flashcard",
+    "question": "What are the three new characteristics of the Internet that affect the nature of attacks?",
+    "answer": "The slide content does not specify the three new characteristics of the Internet, only mentioning that they contribute to the changing nature of attacks."
+  },
+  {
+    "slide_number": 21,
+    "type": "flashcard",
+    "question": "Why is automation considered an attacker's friend in the internet environment?",
+    "answer": "Automation is an attacker's friend because computers are faster than humans, never get bored, and can find, link, or cross-reference large amounts of data from various sources."
+  },
+  {
+    "slide_number": 21,
+    "type": "flashcard",
+    "question": "How does the internet's lack of boundaries benefit attackers?",
+    "answer": "The internet's lack of boundaries allows attackers to operate from anywhere in the world, without needing to be close to the target system."
+  },
+  {
+    "slide_number": 21,
+    "type": "flashcard",
+    "question": "What challenge does the international nature of the internet pose for legal action against attackers?",
+    "answer": "The international nature of the internet complicates legal action against attackers, though significant progress has been made in addressing this issue."
+  },
+  {
+    "slide_number": 21,
+    "type": "flashcard",
+    "question": "How do successful hacking techniques propagate in the internet environment?",
+    "answer": "Successful hacking techniques can be automated and publicized, allowing even those without technical skills to use them."
+  },
+  {
+    "slide_number": 21,
+    "type": "flashcard",
+    "question": "What is one of the problems posed by the availability of attack software kits?",
+    "answer": "The availability of attack software kits means that criminals don't need advanced skills to conduct attacks, which poses a significant security challenge."
+  },
+  {
+    "slide_number": 22,
+    "type": "flashcard",
+    "question": "What are the measures mentioned for running a secure computer system?",
+    "answer": "Disconnect all dial-up connections, permit only direct-wired terminals, put the machine and its terminals in a shielded room, and post guards at the door."
+  },
+  {
+    "slide_number": 22,
+    "type": "flashcard",
+    "question": "Why can't we work with the secure system measures mentioned in the Unix gospel anymore?",
+    "answer": "Because we need to provide sufficiently good security and maintain it at all times through intertwined activities, which are not feasible with the mentioned measures."
+  },
+  {
+    "slide_number": 23,
+    "type": "flashcard",
+    "question": "What are the three key components of good security?",
+    "answer": "Prevention, detection, and reaction."
+  },
+  {
+    "slide_number": 23,
+    "type": "flashcard",
+    "question": "Why is a prevention-only strategy insufficient in security?",
+    "answer": "Because it only works if prevention mechanisms are perfect; otherwise, vulnerabilities can be exploited."
+  },
+  {
+    "slide_number": 23,
+    "type": "flashcard",
+    "question": "What is a common human factor vulnerability in security?",
+    "answer": "Social engineering, where attackers manipulate people into revealing passwords and other secrets."
+  },
+  {
+    "slide_number": 24,
+    "type": "flashcard",
+    "question": "Who is the instructor for CPS571 Introduction to Cyber-Security in Fall 2024?",
+    "answer": "Dr. Jelena Mišić"
+  },
+  {
+    "slide_number": 25,
+    "type": "flashcard",
+    "question": "What is your task after reading about different types of attacks on this slide?",
+    "answer": "Try to figure out if there is some kind of attack that does not fit into the categories listed."
+  },
+  {
+    "slide_number": 26,
+    "type": "flashcard",
+    "question": "What are some types of criminal attacks that aim for financial gain?",
+    "answer": "Fraud, ransomware, scams, theft of intellectual property, identity theft, and brand theft."
+  },
+  {
+    "slide_number": 26,
+    "type": "flashcard",
+    "question": "What distinguishes destructive attacks from other types of criminal attacks?",
+    "answer": "Destructive attacks lack a financial incentive and are often motivated by revenge or malice, unlike fraud or ransomware."
+  },
+  {
+    "slide_number": 26,
+    "type": "flashcard",
+    "question": "What is ransomware?",
+    "answer": "Ransomware is a type of attack where the perpetrator encrypts the victim's filesystem and demands a ransom to restore access."
+  },
+  {
+    "slide_number": 27,
+    "type": "flashcard",
+    "question": "Can attackers be prosecuted under existing laws?",
+    "answer": "Yes, laws against theft, counterfeiting, swindling, etc. apply to both digital and physical worlds."
+  },
+  {
+    "slide_number": 27,
+    "type": "flashcard",
+    "question": "Are there new laws for digital attacks?",
+    "answer": "Yes, new laws have been passed to address specific digital attacks."
+  },
+  {
+    "slide_number": 27,
+    "type": "flashcard",
+    "question": "What is a challenge in prosecuting digital attackers?",
+    "answer": "Finding the perpetrators is often difficult."
+  },
+  {
+    "slide_number": 28,
+    "type": "flashcard",
+    "question": "What are some common targets of privacy violations?",
+    "answer": "Credit records, healthcare data, and personal information for stalking, industrial espionage, or spying."
+  },
+  {
+    "slide_number": 28,
+    "type": "flashcard",
+    "question": "Why does security have limitations in preventing privacy violations?",
+    "answer": "Knowledgeable and well-funded attackers can eventually find out much data about you."
+  },
+  {
+    "slide_number": 28,
+    "type": "flashcard",
+    "question": "What is data harvesting in the context of privacy violations?",
+    "answer": "Data harvesting involves attackers automatically collecting credit card information and other data, often from online platforms like Amazon."
+  },
+  {
+    "slide_number": 29,
+    "type": "flashcard",
+    "question": "Who was identified by tracking his cellular phone usage in 1993?",
+    "answer": "Colombian drug lord Pablo Escobar."
+  },
+  {
+    "slide_number": 29,
+    "type": "flashcard",
+    "question": "What technique was used to kill Chechnyan leader Dzhohar Dudayev in 1996?",
+    "answer": "Pinpointing his location from the transmissions of his personal satellite phone."
+  },
+  {
+    "slide_number": 29,
+    "type": "flashcard",
+    "question": "How did the FBI find the truck belonging to the Oklahoma City federal building's bomber?",
+    "answer": "By collecting surveillance tapes from every camera in the city, correlating them by time using the explosion as a synch pulse, and identifying the truck."
+  },
+  {
+    "slide_number": 29,
+    "type": "flashcard",
+    "question": "What modern technology is mentioned as being able to listen to conversations and identify keywords?",
+    "answer": "Powerful AI."
+  },
+  {
+    "slide_number": 30,
+    "type": "flashcard",
+    "question": "What is a common reason given for recording customer service conversations?",
+    "answer": "This conversation may be monitored or recorded for quality assurance purposes."
+  },
+  {
+    "slide_number": 30,
+    "type": "flashcard",
+    "question": "How do online merchants use your browsing and purchase history?",
+    "answer": "Online merchants track what you buy or look at to offer you similar items in the future."
+  },
+  {
+    "slide_number": 30,
+    "type": "flashcard",
+    "question": "What common feature do Google Maps, Apple Maps, and Waze share concerning data use?",
+    "answer": "They monitor cellular traffic to help navigate the streets."
+  },
+  {
+    "slide_number": 31,
+    "type": "flashcard",
+    "question": "What can be inferred from analyzing Bitcoin transaction graphs as discussed in the paper by Fleder, Kester, and Pillai?",
+    "answer": "A lot of information can be figured out from public transaction data, even though the identities of participants are protected."
+  },
+  {
+    "slide_number": 31,
+    "type": "flashcard",
+    "question": "In the example of address A sending money to other addresses, what could it imply when many transactions eventually lead to a single address X?",
+    "answer": "It might imply that address X is the final recipient or an aggregator of funds from multiple sources, possibly indicating a consolidation of assets."
+  },
+  {
+    "slide_number": 31,
+    "type": "flashcard",
+    "question": "Can the NSA determine the IP addresses from which Bitcoin transactions were initiated?",
+    "answer": "Yes, the NSA can find the IP addresses from which the transactions were launched."
+  },
+  {
+    "slide_number": 32,
+    "type": "flashcard",
+    "question": "What might a pattern of communication, where Alice sends a long message to Bob and Bob replies with a short message to Alice and long messages to five others, indicate?",
+    "answer": "It indicates a chain of command where Alice is sending orders to Bob, who relays them to his subordinates."
+  },
+  {
+    "slide_number": 32,
+    "type": "flashcard",
+    "question": "What unusual activity was observed prior to the U.S. bombing of Iraq in 1991?",
+    "answer": "Pizza deliveries to the Pentagon increased one hundredfold."
+  },
+  {
+    "slide_number": 32,
+    "type": "flashcard",
+    "question": "Did pizza deliveries to the CIA headquarters change in the hours preceding the U.S. bombing of Iraq in 1991?",
+    "answer": "No, pizza deliveries to the CIA headquarters did not change."
+  },
+  {
+    "slide_number": 33,
+    "type": "flashcard",
+    "question": "What is a common reason denial-of-service attacks are effective?",
+    "answer": "Denial-of-service attacks are effective because computer networks are designed to communicate, and a simple automated attack can overwhelm them."
+  },
+  {
+    "slide_number": 33,
+    "type": "flashcard",
+    "question": "Why might low-tech approaches be favored in denial-of-service attacks?",
+    "answer": "Low-tech approaches are often better than high-tech in denial-of-service attacks because they can be simpler and more efficient in overwhelming a network."
+  },
+  {
+    "slide_number": 34,
+    "type": "flashcard",
+    "question": "What was the response of the British bank when a man complained about unauthorized withdrawals in 1994?",
+    "answer": "The bank claimed that the ATM system's security was infallible and charged the man with attempted fraud."
+  },
+  {
+    "slide_number": 34,
+    "type": "flashcard",
+    "question": "Why are legal system attacks challenging to protect against?",
+    "answer": "Because the goal is to persuade parties, such as the judge and jury, that there could be a flaw in the system, making it untrustworthy."
+  },
+  {
+    "slide_number": 35,
+    "type": "flashcard",
+    "question": "What is the term used to describe opponents or enemies in a competitive or conflict scenario?",
+    "answer": "Adversaries"
+  },
+  {
+    "slide_number": 36,
+    "type": "flashcard",
+    "question": "What factors are used to categorize digital world adversaries?",
+    "answer": "Adversaries are categorized according to their objectives, access, resources, expertise, and risk."
+  },
+  {
+    "slide_number": 36,
+    "type": "flashcard",
+    "question": "What are some common objectives of digital world adversaries?",
+    "answer": "Common objectives include causing damage, financial gain, and accessing confidential information."
+  },
+  {
+    "slide_number": 36,
+    "type": "flashcard",
+    "question": "Why might countermeasures that stop individual hackers not work against organized crime?",
+    "answer": "Organized crime is more dangerous and may possess greater resources and expertise, requiring different countermeasures than those for individual hackers."
+  },
+  {
+    "slide_number": 37,
+    "type": "flashcard",
+    "question": "Why can an insider cause more damage than an outsider?",
+    "answer": "An insider can do much more damage due to their access to the organization's resources and information."
+  },
+  {
+    "slide_number": 37,
+    "type": "flashcard",
+    "question": "How does the resource level of an adversary affect their potential danger?",
+    "answer": "An adversary with more resources, primarily money, is much more dangerous because they can buy other necessary resources."
+  },
+  {
+    "slide_number": 37,
+    "type": "flashcard",
+    "question": "What factor varies among different kinds of adversaries and affects their behavior?",
+    "answer": "Risk tolerance varies among different kinds of adversaries and affects their behavior."
+  },
+  {
+    "slide_number": 38,
+    "type": "flashcard",
+    "question": "What factors influence a rational adversary's choice of attack?",
+    "answer": "A rational adversary will choose an attack based on the best return on investment, considering their level of access, expertise, and affordability of the attack."
+  },
+  {
+    "slide_number": 39,
+    "type": "flashcard",
+    "question": "What is a possible definition of a hacker?",
+    "answer": "An individual who experiments with the limitations of systems for intellectual curiosity or pleasure; a person with a particular set of skills and not necessarily a particular set of morals."
+  },
+  {
+    "slide_number": 39,
+    "type": "flashcard",
+    "question": "What are the stereotypical characteristics of today's computer hackers?",
+    "answer": "They are typically young (twenty-something and younger), male, and socially on the fringe."
+  },
+  {
+    "slide_number": 39,
+    "type": "flashcard",
+    "question": "How does a hacker's expertise compare to system designers?",
+    "answer": "Hackers can have expertise on a par with, or even greater than, the system’s original designers."
+  },
+  {
+    "slide_number": 40,
+    "type": "flashcard",
+    "question": "What is the ethical dilemma presented in the example of finding a note on a refrigerator?",
+    "answer": "The dilemma is whether it is acceptable for someone to break into a home to point out a security flaw without causing any harm."
+  },
+  {
+    "slide_number": 40,
+    "type": "flashcard",
+    "question": "What is a problem associated with hackers creating tools for hacking?",
+    "answer": "The problem is that many people can download and use these tools without understanding how they work, which can lead to unethical or illegal activities."
+  },
+  {
+    "slide_number": 40,
+    "type": "flashcard",
+    "question": "Which types of organizations might specifically look to hire hackers?",
+    "answer": "Security agencies and some other organizations may look specifically for hackers to enhance their security measures."
+  },
+  {
+    "slide_number": 41,
+    "type": "flashcard",
+    "question": "What type of criminals cause the bulk of computer-related crimes?",
+    "answer": "Lone criminals cause the bulk of computer-related crimes."
+  },
+  {
+    "slide_number": 41,
+    "type": "flashcard",
+    "question": "Why do lone criminals typically target commerce systems?",
+    "answer": "Lone criminals typically target commerce systems because that's where the money is."
+  },
+  {
+    "slide_number": 41,
+    "type": "flashcard",
+    "question": "What are common characteristics of lone criminals in computer-related crimes?",
+    "answer": "Lone criminals usually don't have much money, access, or expertise, and often get caught due to stupid mistakes."
+  },
+  {
+    "slide_number": 42,
+    "type": "flashcard",
+    "question": "Who are considered potential malicious insiders?",
+    "answer": "Employees, consultants, and contractors."
+  },
+  {
+    "slide_number": 42,
+    "type": "flashcard",
+    "question": "Why are malicious insiders particularly dangerous?",
+    "answer": "They have a high level of access and perimeter defenses don't work against them."
+  },
+  {
+    "slide_number": 42,
+    "type": "flashcard",
+    "question": "What are some motivations for malicious insiders?",
+    "answer": "Revenge, financial gain, institutional change, or publicity."
+  },
+  {
+    "slide_number": 43,
+    "type": "flashcard",
+    "question": "What is the primary motivation behind industrial espionage?",
+    "answer": "To gain an advantage over the competition by stealing competitors’ trade secrets."
+  },
+  {
+    "slide_number": 43,
+    "type": "flashcard",
+    "question": "What distinguishes competitive intelligence from industrial espionage?",
+    "answer": "The legality of investigative techniques; competitive intelligence is legal, while industrial espionage involves illegal activities."
+  },
+  {
+    "slide_number": 43,
+    "type": "flashcard",
+    "question": "What factors contribute to the practice of industrial espionage?",
+    "answer": "Industrial espionage is well-funded and relies on personal knowledge, as amoral but rational companies devote enough resources to achieve an acceptable return on investment."
+  },
+  {
+    "slide_number": 44,
+    "type": "flashcard",
+    "question": "What are the core competencies of organized crime?",
+    "answer": "Drugs, prostitution, extortion, fraud, gambling, money laundering."
+  },
+  {
+    "slide_number": 44,
+    "type": "flashcard",
+    "question": "How is technology used in organized crime?",
+    "answer": "Technology is used both as a new venue for crime and as support for its core businesses."
+  },
+  {
+    "slide_number": 44,
+    "type": "flashcard",
+    "question": "What example is given of law enforcement breaking through organized crime's technological barriers?",
+    "answer": "The DEA breaking the solid encryption of Sky mobile phones."
+  },
+  {
+    "slide_number": 45,
+    "type": "flashcard",
+    "question": "What are security needs?",
+    "answer": "Security needs refer to the requirements necessary to protect individuals, organizations, and systems from harm, threats, or unauthorized access."
+  },
+  {
+    "slide_number": 46,
+    "type": "flashcard",
+    "question": "What is often the first thing that comes to mind when discussing security?",
+    "answer": "Privacy"
+  },
+  {
+    "slide_number": 46,
+    "type": "flashcard",
+    "question": "Do most people and businesses in the United States pay for privacy?",
+    "answer": "No, most people and businesses are not willing to pay for privacy, unlike governments."
+  },
+  {
+    "slide_number": 46,
+    "type": "flashcard",
+    "question": "Who owns the data about individuals in the United States?",
+    "answer": "In the United States, individuals don’t own the data about themselves."
+  },
+  {
+    "slide_number": 46,
+    "type": "flashcard",
+    "question": "What regulation covers data protection in the European Union?",
+    "answer": "General Data Protection Regulation (GDPR)"
+  },
+  {
+    "slide_number": 46,
+    "type": "flashcard",
+    "question": "What had to occur to establish that individuals own their healthcare data in the United States?",
+    "answer": "A lawsuit had to occur to decide that an individual owns their own healthcare data, with a few exceptions."
+  },
+  {
     "slide_number": 47,
-    "question": "Who were the key contributors to the development of public-private key encryption?",
-    "answer": "Diffie, Hellman, with help from Merkle."
+    "type": "flashcard",
+    "question": "Why is long-term privacy often not needed for businesses and governments?",
+    "answer": "Because business and government privacy needs are typically short-term, ranging from weeks to years, with some exceptions like the Coca-Cola recipe."
+  },
+  {
+    "slide_number": 47,
+    "type": "flashcard",
+    "question": "What makes it difficult for governments to maintain privacy?",
+    "answer": "Keeping secrets is harder due to the involvement of many people."
+  },
+  {
+    "slide_number": 47,
+    "type": "flashcard",
+    "question": "What did Schneier predict about future elections in relation to privacy?",
+    "answer": "Schneier predicted that in about two decades, election candidates would need to explain emails they wrote as adolescents."
   },
   {
     "slide_number": 48,
-    "question": "How does public-key cryptography ensure secure communication between Alice and Bob?",
-    "answer": "Alice encrypts a message using Bob's public key (known to everyone), and Bob decrypts it using his private key (known only to him), ensuring only Bob can read the message."
+    "type": "flashcard",
+    "question": "How long must U.S. census raw data remain secret?",
+    "answer": "72 years"
+  },
+  {
+    "slide_number": 48,
+    "type": "flashcard",
+    "question": "Until when does the CIA mandate that the identities of spies remain secret?",
+    "answer": "Until the spy is dead and all the spy’s children are dead."
+  },
+  {
+    "slide_number": 48,
+    "type": "flashcard",
+    "question": "How long does Canadian census data remain secret?",
+    "answer": "Forever"
   },
   {
     "slide_number": 49,
-    "question": "What are the key security services provided by encryption using a private-public key pair?",
-    "answer": "1. **Confidentiality**: Ensures that only the owner of the private key can read the text enciphered with the public key.  \n2. **Authentication**: Verifies that text enciphered with the private key was generated by the owner of the private key.  \n3. **Integrity**: Prevents undetectable changes to enciphered letters without the private key.  \n4. **Non-Repudiation**: Confirms that a message enciphered with the private key came from someone who knew it."
+    "type": "flashcard",
+    "question": "What is the relationship between confidentiality and privacy?",
+    "answer": "Confidentiality is similar to privacy but most often involves two parties, focusing on the privacy of communications."
+  },
+  {
+    "slide_number": 49,
+    "type": "flashcard",
+    "question": "How is confidentiality typically accomplished?",
+    "answer": "Confidentiality is typically accomplished through encryption."
+  },
+  {
+    "slide_number": 49,
+    "type": "flashcard",
+    "question": "What is a potential vulnerability of encryption methods?",
+    "answer": "Many encryption methods can be broken."
   },
   {
     "slide_number": 50,
-    "question": "What are the key requirements of public-key cryptography?",
-    "answer": "Public-key cryptography requires:  \n1. Simple generation of private-public key pairs.  \n2. Symmetric encryption, allowing encryption with one key and decryption with the other.  \n3. Computational infeasibility of deriving the private key from the public key.  \n4. Infeasibility of deciphering messages with only one key."
+    "type": "flashcard",
+    "question": "What is multilevel security, and why is it important in certain applications?",
+    "answer": "Multilevel security is a system that restricts access to information based on different secrecy levels (such as public, secret, and top secret). It is important in applications like commercial, governmental, and military to ensure that not all people have access to all information."
+  },
+  {
+    "slide_number": 50,
+    "type": "flashcard",
+    "question": "How is authorization determined in a multilevel security system?",
+    "answer": "Authorization in a multilevel security system is typically determined on a role-based basis, although it can also be case-by-case."
+  },
+  {
+    "slide_number": 50,
+    "type": "flashcard",
+    "question": "What does the 'need to know' category refer to in the context of multilevel security?",
+    "answer": "The 'need to know' category further restricts access to information, ensuring that a person or role can only see what is necessary for their role."
   },
   {
     "slide_number": 51,
-    "question": "What are some key developments and trends in public-key cryptographic algorithms?",
-    "answer": "Public-key cryptographic algorithms began with Diffie and Hellman's idea and key exchange algorithm. RSA, developed by Rivest, Shamir, and Adleman in 1977, was initially the most widely implemented. Over time, key sizes have increased (e.g., 128, 512 bits). Elliptic-Curve Cryptography (ECC) offers more security with smaller key sizes and is widely used today, alongside other algorithms like ElGamal."
+    "type": "flashcard",
+    "question": "What are some benefits of social anonymity?",
+    "answer": "Social anonymity can be beneficial for the health of the world, such as providing protection and privacy for rape survivors."
+  },
+  {
+    "slide_number": 51,
+    "type": "flashcard",
+    "question": "Why is political anonymity considered important?",
+    "answer": "Political anonymity is important as it allows individuals to express political opinions and engage in political activities without fear of retribution or persecution."
+  },
+  {
+    "slide_number": 51,
+    "type": "flashcard",
+    "question": "What is a common issue associated with anonymity provided by the Internet?",
+    "answer": "Anonymity provided by the Internet is often abused, leading to negative consequences such as cyberbullying and dissemination of false information."
   },
   {
     "slide_number": 52,
-    "question": "What are the possible applications of encryption and key exchange in secure communications?",
-    "answer": "Traditional encryption uses the recipient's public key for secure messaging, while key exchange involves generating and exchanging a session key for faster symmetric encryption, enhancing performance as symmetric encryption is quicker than public/private key encryption."
+    "type": "flashcard",
+    "question": "What is complete anonymity?",
+    "answer": "Complete anonymity refers to situations where there is no identifying information, such as a letter without a return address or a blocked phone number."
+  },
+  {
+    "slide_number": 52,
+    "type": "flashcard",
+    "question": "What is pseudonymity?",
+    "answer": "Pseudonymity is when you use a fictitious name to conceal your identity, such as introducing yourself as 'Bob' at an AA meeting."
+  },
+  {
+    "slide_number": 52,
+    "type": "flashcard",
+    "question": "Why is achieving anonymity challenging in cyberspace?",
+    "answer": "Achieving anonymity in cyberspace is challenging because devices like CPUs, printers, and Office applications have serial numbers that can be traced."
   },
   {
     "slide_number": 53,
-    "question": "**Q:** What are some challenges and solutions related to public key distribution?  \n**A:** Challenges include verifying the authenticity of a public key (e.g., ensuring Bob's key is truly his). Solutions involve physical distribution, authentication mechanisms, and using a trusted or certification authority.",
-    "answer": ""
+    "type": "flashcard",
+    "question": "What does Bitcoin provide in terms of financial transactions?",
+    "answer": "Bitcoin provides anonymous financial transactions."
+  },
+  {
+    "slide_number": 53,
+    "type": "flashcard",
+    "question": "Why might anonymity be sacrificed in commercial transactions?",
+    "answer": "Anonymity is often sacrificed for some gain, such as earning frequent flyer miles."
+  },
+  {
+    "slide_number": 53,
+    "type": "flashcard",
+    "question": "Are all offers that sacrifice anonymity widely accepted?",
+    "answer": "No, not all such offers are widely accepted."
   },
   {
     "slide_number": 54,
-    "question": "What are key aspects of message authentication and how can it be achieved?",
-    "answer": "Message authentication ensures the message is from the claimed source, unchanged, and sent at a specific time or sequence. It can be achieved through conventional encryption (shared key) or creating an authentication tag like HMAC."
+    "type": "flashcard",
+    "question": "Why is medical data sharing important?",
+    "answer": "Medical data sharing is important because it allows for continuity of care without the need for repetitive tests, such as blood samples, during each doctor visit."
+  },
+  {
+    "slide_number": 54,
+    "type": "flashcard",
+    "question": "What is a concern associated with sharing medical data?",
+    "answer": "A concern is that medical data is very personal, and there is a need to limit access to it, typically to healthcare providers and possibly insurance companies."
+  },
+  {
+    "slide_number": 54,
+    "type": "flashcard",
+    "question": "What does HIPAA stand for and what is its role in medical data?",
+    "answer": "HIPAA stands for the Health Insurance Portability and Accountability Act, and it sets standards for computerized medical records to protect patient privacy."
+  },
+  {
+    "slide_number": 54,
+    "type": "flashcard",
+    "question": "What legal principle regarding medical data ownership has been established?",
+    "answer": "Lawsuits have established the principle that patients own their medical data."
   },
   {
     "slide_number": 55,
-    "question": "How is public-key cryptography used for authentication, and what is a key rule to remember?",
-    "answer": "In authentication, Alice encrypts a message with her private key, and Bob decrypts it using Alice's public key to verify it came from her. A key rule to remember is to always sign the message first, then encipher it."
+    "type": "flashcard",
+    "question": "What is the main purpose of authentication?",
+    "answer": "The main purpose of authentication is to prove that you or the other party is who they claim to be, which is essential for knowing who to trust."
+  },
+  {
+    "slide_number": 55,
+    "type": "flashcard",
+    "question": "Why is authentication important in everyday activities, such as buying ice cream from a truck?",
+    "answer": "Authentication is important in everyday activities to ensure trust and verify identities, preventing fraud or deceit in transactions."
+  },
+  {
+    "slide_number": 55,
+    "type": "flashcard",
+    "question": "How does the internet complicate authentication?",
+    "answer": "The internet complicates authentication by making it difficult to verify the true identity of online entities, as exemplified by the ambiguity between similar URLs like www.nwa.com and www.northwest-airlines.com."
   },
   {
     "slide_number": 56,
-    "question": "**Q: How does double encryption with private and public keys support both security and authentication, and what could happen if the order of encryptions is reversed?**",
-    "answer": "**A: Double encryption supports security and authentication by having Alice encrypt a message with her private key and then Bob’s public key. Bob decrypts first with his private key, then Alice's public key, ensuring the message is intended for Bob and from Alice. Reversing this order could compromise authentication, as anyone could decrypt with Bob's public key first, losing the assurance it came specifically from Alice.**"
+    "type": "flashcard",
+    "question": "What is session authentication?",
+    "answer": "Session authentication authenticates the continuity of a particular conversation. It is easier to do face-to-face or on the phone, but not quite easy on the Internet."
+  },
+  {
+    "slide_number": 56,
+    "type": "flashcard",
+    "question": "What is transaction authentication?",
+    "answer": "Transaction authentication determines whether a transaction is valid, including all parties involved."
   },
   {
     "slide_number": 57,
-    "question": "What is the process for Alice to sign a message using a digital signature, and how does Bob verify it?",
-    "answer": "Alice creates a digital signature by taking a one-way hash of the message and encrypting the hash with her private key. Bob verifies it by decrypting the hash with Alice's public key to confirm it's from her and recalculating the hash to ensure the message hasn't been tampered with."
+    "type": "flashcard",
+    "question": "What is a key concern regarding the integrity of digital data?",
+    "answer": "The concern is whether the data is truly from the source and has not been tampered with."
+  },
+  {
+    "slide_number": 57,
+    "type": "flashcard",
+    "question": "How does integrity differ from authentication in the context of data?",
+    "answer": "While both deal with the authenticity of data, integrity focuses on whether data has been altered, whereas authentication verifies the identity of the source."
+  },
+  {
+    "slide_number": 57,
+    "type": "flashcard",
+    "question": "Why is tampering with digital data considered easy?",
+    "answer": "Tampering with digital data is considered easy because it can be easily altered and propagated over the Internet."
   },
   {
     "slide_number": 58,
-    "question": "What are the challenges in generating random numbers and how do natural and artificial random numbers differ?",
-    "answer": "Generating random numbers is complex. Natural random numbers, like those from radioactive decay, are truly random but scarce. Artificial random numbers can be generated in many ways but require careful validation to ensure quality and avoid negative outcomes."
+    "type": "flashcard",
+    "question": "What is the role of double-entry bookkeeping in auditing?",
+    "answer": "Double-entry bookkeeping serves as a form of audit by allowing early detection of mistakes and reducing the likelihood of fraud."
+  },
+  {
+    "slide_number": 58,
+    "type": "flashcard",
+    "question": "Can auditing prevent attacks?",
+    "answer": "No, auditing cannot prevent attacks but it can detect successful attacks, figure out what happened, and prove it later, such as in court."
+  },
+  {
+    "slide_number": 58,
+    "type": "flashcard",
+    "question": "What determines the amount of auditing needed?",
+    "answer": "The amount of auditing needed depends on the specific application."
   },
   {
     "slide_number": 59,
-    "question": "What are the considerations for key length in cryptography, and how do different types of attacks relate to it?",
-    "answer": "Key length is crucial in cryptography, with longer keys generally offering more security. However, a long key isn't always better. Brute-force attacks involve checking all possible combinations, e.g., 40-bit keys have 2^40 combinations. Public-key cryptography uses longer keys like 1024 or 2048 bits for RSA, while elliptic curve cryptography uses shorter keys. Dictionary attacks attempt common words first and apply to any algorithm."
+    "type": "flashcard",
+    "question": "What is the cycle described in the slide regarding systems and criminals?",
+    "answer": "A system is devised, criminals find ways to abuse it, the system is improved, and then criminals adapt again."
+  },
+  {
+    "slide_number": 59,
+    "type": "flashcard",
+    "question": "How was credit card verification originally performed?",
+    "answer": "Credit card verification was originally done offline."
+  },
+  {
+    "slide_number": 59,
+    "type": "flashcard",
+    "question": "What role do AI programs play in combating credit card fraud?",
+    "answer": "AI programs check spending patterns and alert users to irregularities."
   },
   {
     "slide_number": 60,
-    "question": "What is the primary focus of computer security?",
-    "answer": "Protecting computer systems and data from unauthorized access, damage, or theft."
+    "type": "flashcard",
+    "question": "What are some examples of classical cryptographic techniques?",
+    "answer": "Cæsar cipher, Vigenere cipher, substitution, and transposition ciphers."
+  },
+  {
+    "slide_number": 60,
+    "type": "flashcard",
+    "question": "Name some modern cryptographic algorithms mentioned in the slide.",
+    "answer": "DES, AES, BlowFish, and a bit of IDEA algorithm."
+  },
+  {
+    "slide_number": 60,
+    "type": "flashcard",
+    "question": "Who is the author of the book 'Computer Security: The Art and Science' mentioned in the slide?",
+    "answer": "M. Bishop."
   },
   {
     "slide_number": 61,
-    "question": "What is the primary purpose of public key cryptography and how do the public and private keys function in ensuring confidentiality and integrity?",
-    "answer": "Public key cryptography is used to ensure confidentiality and integrity of messages. For confidentiality, a message is encrypted with the recipient's public key and can only be decrypted with their private key. For integrity/authentication, a message is encrypted with the sender's private key and can be verified by anyone using the sender's public key."
+    "type": "flashcard",
+    "question": "What is the core technology of cyberspace that allows for built-in security?",
+    "answer": "Cryptography"
+  },
+  {
+    "slide_number": 61,
+    "type": "flashcard",
+    "question": "Why is it important to understand cryptography?",
+    "answer": "Understanding cryptography helps in knowing its ramifications and effectively applying it in cyberspace."
+  },
+  {
+    "slide_number": 61,
+    "type": "flashcard",
+    "question": "What is the oldest application of cryptography?",
+    "answer": "Encryption"
   },
   {
     "slide_number": 62,
-    "question": "What is the key requirement for public key encryption algorithms, and can you give examples?",
-    "answer": "Public key encryption algorithms require a public key \\( K^+ \\) and a private key \\( K^- \\) such that it is infeasible to compute the private key from the public key. Examples include RSA (Rivest-Shamir-Adleman), El-Gamal, and the knapsack algorithm."
+    "type": "flashcard",
+    "question": "What are the five ingredients of an encryption scheme?",
+    "answer": "The five ingredients are plaintext, encryption algorithm, secret key, ciphertext, and decryption algorithm."
+  },
+  {
+    "slide_number": 62,
+    "type": "flashcard",
+    "question": "What is the role of the encryption algorithm in an encryption scheme?",
+    "answer": "The encryption algorithm is used to encode the plaintext."
+  },
+  {
+    "slide_number": 62,
+    "type": "flashcard",
+    "question": "What is ciphertext?",
+    "answer": "Ciphertext is the encoded message resulting from the encryption process."
   },
   {
     "slide_number": 63,
-    "question": "**Q: What are the key properties of modular arithmetic, and how do they apply to calculations, such as (a mod n)^d mod n? Provide an example with a = 14, n = 10, and d = 2.**",
-    "answer": "**A: Key properties of modular arithmetic include:**\n\n- \\((a \\mod n) + (b \\mod n) \\equiv (a+b) \\mod n\\)\n- \\((a \\mod n) - (b \\mod n) \\equiv (a-b) \\mod n\\)\n- \\((a \\mod n) \\times (b \\mod n) \\equiv (a \\times b) \\mod n\\"
+    "type": "flashcard",
+    "question": "What are the three main ways algorithms can be classified in cryptography?",
+    "answer": "Algorithms can be classified based on the type of operations used for transforming plaintext to ciphertext and back, the number of keys used (symmetric or asymmetric), and the way in which the plaintext is processed."
   },
   {
     "slide_number": 64,
-    "question": "What role does modular arithmetic play in cryptography, and what are some related computational problems?",
-    "answer": "Modular arithmetic is essential in cryptography for managing computation sizes and memory use. It helps solve difficult problems like the discrete logarithm problem, which involves finding \\( x \\) such that \\((a \\cdot x) \\mod n = 1\\) or \\(a^x \\mod n = S\\). Other challenging problems include factorization and finding the greatest common divisor for large numbers."
+    "type": "flashcard",
+    "question": "Why is security primarily dependent on the secrecy of the key rather than the algorithm?",
+    "answer": "Because an algorithm cannot be kept secret as it must be distributed and can be disassembled, whereas a key can remain secret."
+  },
+  {
+    "slide_number": 64,
+    "type": "flashcard",
+    "question": "What is the advantage of open algorithms in terms of security?",
+    "answer": "Open algorithms can be scrutinized for correctness, allowing for potential vulnerabilities to be identified and addressed."
+  },
+  {
+    "slide_number": 64,
+    "type": "flashcard",
+    "question": "What is an example of a case where the algorithm was not kept secret?",
+    "answer": "The Clipper chip with the Skipjack algorithm, used between 1993 and 1996, is an example where the algorithm was not kept secret."
   },
   {
     "slide_number": 65,
-    "question": "What conditions must be met for the inverse of a number \\(a\\) modulo \\(n\\) to exist, and how can it be found?",
-    "answer": "The inverse of \\(a\\) modulo \\(n\\) exists if \\(a\\) and \\(n\\) are relatively prime (i.e., they have no common factors other than 1). To find it, solve the equation \\((a \\cdot x) \\equiv 1 \\pmod{n}\\). For example, the inverse of 4 modulo 7 is 2, since \\((4 \\cdot 2) \\equiv 1 \\pmod{7}\\)."
+    "type": "flashcard",
+    "question": "What is the average time required for an exhaustive key search for a 32-bit key at a rate of 10^6 decryptions per microsecond?",
+    "answer": "2.15 milliseconds"
+  },
+  {
+    "slide_number": 65,
+    "type": "flashcard",
+    "question": "How long does it take on average to exhaustively search a 56-bit key space at 10^6 decryptions per microsecond?",
+    "answer": "10 hours"
+  },
+  {
+    "slide_number": 65,
+    "type": "flashcard",
+    "question": "What is the estimated time to exhaustively search a 128-bit key space at 10^6 decryptions per microsecond?",
+    "answer": "5.4 x 10^18 years"
+  },
+  {
+    "slide_number": 65,
+    "type": "flashcard",
+    "question": "Calculate the time required to exhaustively search a 168-bit key space at a rate of 10^6 decryptions per microsecond.",
+    "answer": "9.5 x 10^30 years"
   },
   {
     "slide_number": 66,
-    "question": "What is Euler's totient function, and how is it calculated for a number that is the product of two primes?",
-    "answer": "Euler's totient function, \\( \\phi(n) \\), counts the positive integers less than \\( n \\) that are relatively prime to \\( n \\). For a number \\( n = pq \\), where \\( p \\) and \\( q \\) are primes, \\( \\phi(n) = (p-1)(q-1) \\)."
+    "type": "flashcard",
+    "question": "What is the main characteristic of symmetric key cryptography?",
+    "answer": "In symmetric key cryptography, the sender and receiver keys are identical."
+  },
+  {
+    "slide_number": 66,
+    "type": "flashcard",
+    "question": "How does public-key cryptography differ from symmetric key cryptography?",
+    "answer": "In public-key cryptography, the encryption key is public, while the decryption key is secret (private)."
+  },
+  {
+    "slide_number": 66,
+    "type": "flashcard",
+    "question": "What type of attack might Trudy, the intruder, attempt while listening to the traffic?",
+    "answer": "Trudy might attempt a man-in-the-middle attack."
   },
   {
     "slide_number": 67,
-    "question": "What does Fermat's Little Theorem state about discrete logarithms when \\( m \\) is prime and \\( a \\) is not a multiple of \\( m \\)?",
-    "answer": "Fermat's Little Theorem states that \\( a^{m-1} \\equiv 1 \\mod m \\). For example, \\( 5^6 \\equiv 1 \\mod 7 \\). This implies \\( a^{-1} \\equiv a^{m-2} \\mod m \\)."
+    "type": "flashcard",
+    "question": "Who might Bob and Alice represent in real-life scenarios?",
+    "answer": "Real-life Bobs and Alices could be parties exchanging emails or messages, web browsers/servers for electronic transactions, online banking client/servers, DNS servers, routers exchanging routing table updates, among other examples."
   },
   {
     "slide_number": 68,
-    "question": "What is Euler's generalization of Fermat's Little Theorem, and how is the inverse of a number modulo n computed?",
-    "answer": "Euler's generalization of Fermat's Little Theorem states that if gcd(a, n) = 1, then \\( a^{f(n)} \\equiv 1 \\pmod{n} \\), where \\( f(n) \\) is the Euler's totient function. The inverse of a number \\( a \\) modulo \\( n \\) is computed as \\( a^{-1} \\equiv a^{f(n)-1} \\pmod{n} \\). For example, the inverse of 5 modulo 7 is \\("
+    "type": "flashcard",
+    "question": "What does the quintuple (E, D, M, K, C) represent in a cryptosystem?",
+    "answer": "E is the set of encryption functions, D is the set of decryption functions, M is the set of plaintexts, K is the set of keys, and C is the set of ciphertexts."
+  },
+  {
+    "slide_number": 68,
+    "type": "flashcard",
+    "question": "What is the primary purpose of cryptography?",
+    "answer": "Cryptography mainly provides confidentiality."
+  },
+  {
+    "slide_number": 68,
+    "type": "flashcard",
+    "question": "Aside from confidentiality, what other security aspects can cryptography provide?",
+    "answer": "Cryptography can provide integrity of data, origin verification, and non-repudiation."
   },
   {
     "slide_number": 69,
-    "question": "What is the Diffie-Hellman algorithm, and what mathematical principle is it based on?",
-    "answer": "The Diffie-Hellman algorithm is a symmetric key exchange protocol that computes a common, shared key between two parties. It is based on the discrete logarithm problem and requires understanding number theory, specifically properties like \\((ab) \\mod n = [(a \\mod n)(b \\mod n)] \\mod n\\) and \\(a^k \\mod n = (a \\mod n)^k \\mod n\\)."
+    "type": "flashcard",
+    "question": "What is the mathematical function used for encryption in a Caesar Cipher?",
+    "answer": "Ek(m) = (m + k) mod 26"
+  },
+  {
+    "slide_number": 69,
+    "type": "flashcard",
+    "question": "What is the decryption function in a Caesar Cipher?",
+    "answer": "Dk(c) = (26 + c - k) mod 26"
+  },
+  {
+    "slide_number": 69,
+    "type": "calculation",
+    "question": "Encrypt the word 'HELLO' using a Caesar Cipher with a key of 3.",
+    "answer": "KHOOR"
+  },
+  {
+    "slide_number": 69,
+    "type": "flashcard",
+    "question": "What is the range for key 'k' in a Caesar Cipher?",
+    "answer": "0 ≤ k ≤ 25"
   },
   {
     "slide_number": 70,
-    "question": "What are the key steps in the Diffie-Hellman algorithm as used by Alice and Bob?",
-    "answer": "Alice and Bob choose a generator \\( g \\) and a prime number \\( p \\) (both public). They each select private keys \\( k_a \\) and \\( k_b \\), known only to themselves. They compute their public keys as \\( K_a = g^{k_a} \\mod p \\) and \\( K_b = g^{k_b} \\mod p \\). It is computationally infeasible to determine \\( k_a \\) and \\( k_b \\) from \\( K_a, K_b, g, \\) and \\( p \\) as \\( p \\) grows"
+    "type": "flashcard",
+    "question": "What is the term used for an opponent whose goal is to break a cryptosystem?",
+    "answer": "The adversary."
+  },
+  {
+    "slide_number": 70,
+    "type": "flashcard",
+    "question": "What does the adversary know and not know in a cryptographic attack?",
+    "answer": "The adversary knows the algorithm used (public) but not the key."
+  },
+  {
+    "slide_number": 70,
+    "type": "flashcard",
+    "question": "List the three types of cryptographic attacks in decreasing order of difficulty.",
+    "answer": "Ciphertext only, known plaintext, chosen plaintext."
+  },
+  {
+    "slide_number": 70,
+    "type": "flashcard",
+    "question": "What is the goal of a ciphertext-only attack in cryptography?",
+    "answer": "To find the plaintext and possibly the key."
+  },
+  {
+    "slide_number": 70,
+    "type": "flashcard",
+    "question": "Define a pangram and give an example.",
+    "answer": "A pangram is a sentence that contains every letter of the alphabet. Example: 'a quick brown fox jumps over the lazy dog.'"
   },
   {
     "slide_number": 71,
-    "question": "How do Alice and Bob establish a shared secret key using the Diffie-Hellman Algorithm?",
-    "answer": "Alice and Bob each choose private keys (ka and kb) and compute their public keys (Ka = g^ka mod p and Kb = g^kb mod p). They exchange public keys and compute the shared secret key as Kshared = g^(ka*kb) mod p using each other's public keys."
+    "type": "flashcard",
+    "question": "What do real attacks typically target instead of breaking cryptography?",
+    "answer": "Real attacks generally don't break cryptography; they target other vulnerabilities, such as tunneling into the vault instead of picking the lock."
+  },
+  {
+    "slide_number": 71,
+    "type": "flashcard",
+    "question": "What are mathematical attacks based on in the context of cryptography?",
+    "answer": "Mathematical attacks are based on the analysis of the underlying mathematics of crypto algorithms, which are public, while keys are kept secret."
+  },
+  {
+    "slide_number": 71,
+    "type": "flashcard",
+    "question": "What assumptions do statistical attacks make in cryptography?",
+    "answer": "Statistical attacks make assumptions about the distribution of letters, digrams, and trigrams in plaintext, using a model of a particular language like English."
   },
   {
     "slide_number": 72,
-    "question": "How is the shared key calculated in the Diffie-Hellman algorithm example with p = 53 and g = 17, where Alice's secret key is 5 and Bob's secret key is 7?",
-    "answer": "Alice computes the shared key as \\(6^5 \\mod 53 = 38\\), and Bob computes it as \\(40^7 \\mod 53 = 38\\). Both results match, confirming the shared key is 38, which can be used in symmetric key encryption."
+    "type": "flashcard",
+    "question": "What is a key characteristic of symmetric cryptography?",
+    "answer": "In symmetric cryptography, the sender and receiver share a common key for both encryption and decryption."
+  },
+  {
+    "slide_number": 72,
+    "type": "flashcard",
+    "question": "What are the two basic types of symmetric ciphers?",
+    "answer": "The two basic types of symmetric ciphers are transposition ciphers and substitution ciphers."
+  },
+  {
+    "slide_number": 72,
+    "type": "flashcard",
+    "question": "How can symmetric ciphers be attacked?",
+    "answer": "Symmetric ciphers can be attacked by statistical methods, such as analyzing 1-gram and 2-gram occurrences of letters in the message."
   },
   {
     "slide_number": 73,
-    "question": "Who was Taher El Gamal, and what is he known for in the context of cryptography?",
-    "answer": "Taher El Gamal, a PhD student of Martin Hellman at Stanford University, is known for developing the El Gamal Cryptosystem."
+    "type": "flashcard",
+    "question": "What is a substitution cipher in symmetric key cryptography?",
+    "answer": "A substitution cipher involves substituting one thing for another, such as substituting one letter for another in a monoalphabetic cipher."
+  },
+  {
+    "slide_number": 73,
+    "type": "flashcard",
+    "question": "How is a monoalphabetic cipher implemented at the hardware level?",
+    "answer": "At the hardware level, sequences of bits are substituted in a monoalphabetic cipher."
+  },
+  {
+    "slide_number": 73,
+    "type": "flashcard",
+    "question": "What is the encryption key in a monoalphabetic substitution cipher?",
+    "answer": "The encryption key is a mapping from a set of 26 letters to another set of 26 letters."
   },
   {
     "slide_number": 74,
-    "question": "**Q: What is the El Gamal Cryptosystem based on, and what makes it secure as the prime number \\( p \\) increases?**",
-    "answer": "**A: The El Gamal Cryptosystem is based on the discrete logarithm problem. Its security increases as the prime number \\( p \\) grows larger because finding the integer \\( k \\) such that \\( a = g^k \\mod p \\) becomes computationally infeasible for large \\( p \\).**"
+    "type": "flashcard",
+    "question": "What is the main purpose of the Vigenere cipher in cryptography?",
+    "answer": "The main purpose of the Vigenere cipher is to mitigate statistical attacks on substitution ciphers by using a sequence of keys represented by a string, making it a poly-alphabetic cipher."
+  },
+  {
+    "slide_number": 74,
+    "type": "flashcard",
+    "question": "What is the 'period' in the context of the Vigenere cipher?",
+    "answer": "The 'period' in the context of the Vigenere cipher is the length of the key."
+  },
+  {
+    "slide_number": 74,
+    "type": "flashcard",
+    "question": "How does the Vigenere cipher differ from the one-time pad?",
+    "answer": "The Vigenere cipher uses a repeating key, while the one-time pad is a variant of the Vigenere cipher where the key is chosen at random, used only once, and has at least the length of the message."
   },
   {
     "slide_number": 75,
-    "question": "How are the public and private keys generated in the given algorithm?",
-    "answer": "To generate keys, choose a prime \\( p \\) such that \\( p-1 \\) has a large factor. Select a generator \\( g \\) where \\( 1 < g < p \\) and a private key \\( k_{\\text{priv}} \\) where \\( 1 < k_{\\text{priv}} < p-1 \\). Compute \\( y = g^{k_{\\text{priv}}} \\mod p \\). The public key is \\( k_{\\text{pub}} = (p, g, y) \\) and the private key is \\( k_{\\text{priv}} \\)."
+    "type": "flashcard",
+    "question": "What is the key component of the encryption approach mentioned in the slide that comes from the Vigenere cipher?",
+    "answer": "The key component is the use of multiple substitution ciphers (n substitution ciphers) and a cyclic pattern for encrypting each new plaintext symbol."
+  },
+  {
+    "slide_number": 75,
+    "type": "flashcard",
+    "question": "How does the cyclic pattern work in the encryption approach described?",
+    "answer": "For each new plaintext symbol, a subsequent substitution cipher from the cyclic pattern is used. For example, if n=4: the pattern might be M1,M3,M4,M3,M2, and it repeats."
+  },
+  {
+    "slide_number": 75,
+    "type": "flashcard",
+    "question": "What is the difference between stream ciphers and block ciphers as mentioned in the slide?",
+    "answer": "Stream ciphers encipher each letter independently, whereas block ciphers encipher whole messages or large parts of them as streams of bits."
   },
   {
     "slide_number": 76,
-    "question": "What are the components of Alice's public key in the given cryptographic example?",
-    "answer": "Alice's public key components are the prime number \\( p = 262643 \\), the generator \\( g = 9563 \\), and the computed value \\( y = 27459 \\), forming the public key \\( k_{pub} = (262643, 9563, 27459) \\)."
+    "type": "flashcard",
+    "question": "What is symmetric key cryptography?",
+    "answer": "Symmetric key cryptography is a method where Bob and Alice share the same key (symmetric key) for encryption and decryption."
+  },
+  {
+    "slide_number": 76,
+    "type": "flashcard",
+    "question": "In symmetric key cryptography, what is an example of a key?",
+    "answer": "An example of a key in symmetric key cryptography is a known substitution pattern in a mono-alphabetic substitution cipher."
+  },
+  {
+    "slide_number": 76,
+    "type": "flashcard",
+    "question": "What is a key challenge in symmetric key cryptography?",
+    "answer": "A key challenge in symmetric key cryptography is how Bob and Alice agree on the key value."
   },
   {
     "slide_number": 77,
-    "question": "How is a message enciphered and deciphered using the given method, and what ensures the security of the encipherment process?",
-    "answer": "To encipher a message \\( m \\), choose a random integer \\( k \\) (relatively prime to \\( p-1 \\)), compute \\( c_1 = g^k \\mod p \\) and \\( c_2 = m \\cdot y^k \\mod p \\). The ciphertext is \\( c = (c_1, c_2) \\). For deciphering, compute \\( m' = c_2 \\cdot c_1^{-k_{\\text{priv}}} \\mod p \\), which simplifies to \\( m"
+    "type": "flashcard",
+    "question": "What is the block size used by the Data Encryption Standard (DES)?",
+    "answer": "DES encrypts blocks of 64 bits."
+  },
+  {
+    "slide_number": 77,
+    "type": "flashcard",
+    "question": "How many rounds does the DES algorithm perform?",
+    "answer": "The DES algorithm consists of 16 rounds (iterations)."
+  },
+  {
+    "slide_number": 77,
+    "type": "flashcard",
+    "question": "What is the key size used in DES after dropping the parity bits?",
+    "answer": "The user's key is reduced to 56 bits after dropping the parity bits."
   },
   {
     "slide_number": 78,
-    "question": "How does Bob encrypt the message \"PUPPIESARESM ALL\" using the given parameters in the example encryption method?",
-    "answer": "Bob represents each character as a number (A=00, Z=25, space=26) and forms blocks of 3 characters. For encryption, he calculates c1 and c2 using chosen k values and the formulae: c1 = g^k mod p and c2 = (message block * kpub^k) mod p. Using k=5 for the first block, he computes (c1,1= 15653, c1,2= 923). Continuing similarly for other blocks, the enciphered message is (156"
+    "type": "flashcard",
+    "question": "What is the bit length of the initial key used in generating the 16 round keys for Cp 571?",
+    "answer": "56 bits (64 bits minus 8 bits for parity)."
+  },
+  {
+    "slide_number": 78,
+    "type": "flashcard",
+    "question": "How are the round keys generated from the initial key in Cp 571?",
+    "answer": "Round keys are obtained by permuting the 56 bits of the initial key and extracting 48 bits each time."
+  },
+  {
+    "slide_number": 78,
+    "type": "flashcard",
+    "question": "What roles do PC-1 and PC-2 play in the key generation process?",
+    "answer": "PC-1 and PC-2 are permutation tables used to rearrange the bits during the key generation process."
+  },
+  {
+    "slide_number": 78,
+    "type": "flashcard",
+    "question": "What is the purpose of the LSH table in the key generation process?",
+    "answer": "The LSH table specifies one or two-bit left shifts depending on the round during the key generation."
   },
   {
     "slide_number": 79,
-    "question": "How does Alice decrypt the received message blocks using the given parameters in an example decryption process?",
-    "answer": "Alice uses the formula \\( m = c_2 \\times c_1^{-k_{\\text{priv}}} \\mod p \\) for decryption. For each block like \\((c_1, c_2)\\), she computes the message \\( m \\). For example, for the first block \\((923, 15653)\\), she calculates \\( (923 \\times 15653^{-3632}) \\mod 262643 = 152015 \\). Repeating this for each block gives the full message \"PUPPIESARESMALL\"."
+    "type": "flashcard",
+    "question": "How many rounds of encipherment are there in the Fall 2024 Cp 571DES encipherment process?",
+    "answer": "There are 16 rounds of encipherment."
+  },
+  {
+    "slide_number": 79,
+    "type": "flashcard",
+    "question": "What happens to the right half of the input in the encipherment process?",
+    "answer": "The right half of the input is expanded to 48 bits and XOR-ed with the round key."
+  },
+  {
+    "slide_number": 79,
+    "type": "flashcard",
+    "question": "What is the function of the S-box in the encipherment process?",
+    "answer": "Each S-box takes a 6-bit input and produces a 4-bit output, which are concatenated into a 32-bit entity."
   },
   {
     "slide_number": 80,
-    "question": "What is a key feature of the El Gamal encryption scheme that helps prevent replay attacks, and what vulnerability arises if the same random integer is used twice?",
-    "answer": "The El Gamal encryption scheme introduces randomness with a random number \\( k \\), leading to different ciphertexts for the same message, which helps prevent replay attacks. However, if the same integer \\( k \\) is used twice, and an attacker has the plaintext of one message, they can easily decipher the second message by comparing ciphertext components and exploiting the known parameters \\( p \\) and \\( g \\)."
+    "type": "flashcard",
+    "question": "What is the function of the 'E' operation in the DES algorithm?",
+    "answer": "The 'E' operation in the DES algorithm is the Expansion function, which expands 32 bits to 48 bits."
+  },
+  {
+    "slide_number": 80,
+    "type": "flashcard",
+    "question": "How many bits does each S-box in DES output after processing?",
+    "answer": "Each S-box in DES outputs 4 bits after processing."
+  },
+  {
+    "slide_number": 80,
+    "type": "flashcard",
+    "question": "What is the size of the input and output for the DES 'P' permutation?",
+    "answer": "The DES 'P' permutation takes 32 bits as input and outputs 32 bits."
   },
   {
     "slide_number": 81,
-    "question": "What are the key challenges that the Rivest, Shamir, Adleman (RSA) algorithm relies on for security?",
-    "answer": "The RSA algorithm's security relies on the difficulty of factoring large integers and solving the discrete logarithm problem."
+    "type": "flashcard",
+    "question": "What is the direct use of DES known as?",
+    "answer": "Electronic Code Book Mode (ECB)"
+  },
+  {
+    "slide_number": 81,
+    "type": "flashcard",
+    "question": "Why is the ECB mode rarely used?",
+    "answer": "Because it was considered weak since it enciphers each block of 64 bits independently."
+  },
+  {
+    "slide_number": 81,
+    "type": "flashcard",
+    "question": "What does Cipher Block Chaining Mode (CBC) require for the first block?",
+    "answer": "An initialization vector."
+  },
+  {
+    "slide_number": 81,
+    "type": "flashcard",
+    "question": "Describe the Encrypt-Decrypt-Encrypt Mode used in financial institutions.",
+    "answer": "It uses two keys (k, k') and the process is c = DESk(DESk’–1(DESk(m)))."
+  },
+  {
+    "slide_number": 81,
+    "type": "flashcard",
+    "question": "How does the Encrypt-Encrypt-Encrypt Mode differ from the Encrypt-Decrypt-Encrypt Mode?",
+    "answer": "Encrypt-Encrypt-Encrypt Mode uses three keys (k, k', k'') and the process is c = DESk(DESk’(DESk’’(m)))."
   },
   {
     "slide_number": 82,
-    "question": "How does Euler's generalization of Fermat’s Little Theorem apply to simplify the expression \\( x^y \\mod n \\)?",
-    "answer": "Euler's generalization states that if \\(\\gcd(x, n) = 1\\), then \\( x^{\\phi(n)} \\equiv 1 \\mod n \\). Therefore, \\( x^y \\mod n \\) can be simplified to \\( x^{y \\mod \\phi(n)} \\mod n \\), since \\( x^{k\\phi(n) + y \\mod \\phi(n)} \\equiv x^{y \\mod \\phi(n)} \\mod n \\)."
+    "type": "flashcard",
+    "question": "What is the encryption mode used in Fall 2024 Cp 571 as described on slide 82?",
+    "answer": "CBC (Cipher Block Chaining) Mode Encryption"
+  },
+  {
+    "slide_number": 82,
+    "type": "flashcard",
+    "question": "In CBC mode encryption, what operation is performed between the initialization vector and the first plaintext block m1?",
+    "answer": "An XOR operation () is performed between the initialization vector and the first plaintext block m1."
+  },
+  {
+    "slide_number": 82,
+    "type": "flashcard",
+    "question": "What cryptographic algorithm is used in the process described on slide 82?",
+    "answer": "DES (Data Encryption Standard)"
   },
   {
     "slide_number": 83,
-    "question": "What are the key steps involved in the RSA algorithm for encryption and decryption?",
-    "answer": "In the RSA algorithm, choose two large secret primes \\( p \\) and \\( q \\), compute \\( n = pq \\) and \\( \\phi(n) = (p-1)(q-1) \\). Select a public key \\( e \\) such that \\( e \\) is relatively prime to \\( \\phi(n) \\). Compute the private key \\( d \\) where \\( ed \\mod \\phi(n) = 1 \\). The public key is \\( (e, n) \\) and the private key is \\( d \\). For encryption, divide the message into blocks \\( m < n"
+    "type": "flashcard",
+    "question": "What was the major flaw of DES that led to its successor being selected?",
+    "answer": "DES was vulnerable to attacks and could be broken in a few days, leading to the selection of Rijndael as its successor for the Advanced Encryption Standard (AES) in 2001."
+  },
+  {
+    "slide_number": 83,
+    "type": "flashcard",
+    "question": "When was the original DES officially withdrawn?",
+    "answer": "The original DES was officially withdrawn in 2005."
+  },
+  {
+    "slide_number": 83,
+    "type": "flashcard",
+    "question": "What is the only approved implementation of DES after its withdrawal?",
+    "answer": "The only approved implementation of DES after its withdrawal is triple DES."
   },
   {
     "slide_number": 84,
-    "question": "What are the steps to encrypt and decrypt a bit pattern using RSA with given values (n, e) and (n, d)?",
-    "answer": "To encrypt a bit pattern, m, using RSA, compute c = m^e mod n (remainder when m^e is divided by n). To decrypt the received bit pattern, c, compute m = c^d mod n (remainder when c^d is divided by n)."
+    "type": "flashcard",
+    "question": "What is the Advanced Encryption Standard (AES) and what does it replace?",
+    "answer": "AES is a relatively new symmetric-key NIST standard that replaces DES."
+  },
+  {
+    "slide_number": 84,
+    "type": "flashcard",
+    "question": "What is the original name of AES and what type of data blocks does it process?",
+    "answer": "The original name of AES is Dutch-Rijndael, and it processes data in 128-bit (16-byte) blocks."
+  },
+  {
+    "slide_number": 84,
+    "type": "flashcard",
+    "question": "How many key sizes does AES support and how does the number of rounds relate to the key length?",
+    "answer": "AES supports 128, 192, or 256-bit keys, and the number of rounds is a function of the key length."
+  },
+  {
+    "slide_number": 84,
+    "type": "flashcard",
+    "question": "How long does brute force decryption of AES take compared to DES?",
+    "answer": "Brute force decryption taking 1 second on DES would take 149 trillion years for AES."
   },
   {
     "slide_number": 85,
-    "question": "**Question:** What is an important property of RSA encryption regarding the use of public and private keys?",
-    "answer": "**Answer:** An important property of RSA is that a message encrypted with the public key can be decrypted with the private key, and vice versa. Specifically, if you encrypt a message \\( m \\) using the public key first and then decrypt it with the private key, you get the original message back: \\( K_{priv}(K_{pub}(m)) = m \\). Similarly, if you encrypt with the private key and decrypt with the public key, you also retrieve the original message: \\( K_{pub}(K_{priv}(m)) = m \\)."
+    "type": "flashcard",
+    "question": "What is the block size that AES encrypts?",
+    "answer": "AES encrypts blocks of 128 bits (16 bytes)."
+  },
+  {
+    "slide_number": 85,
+    "type": "flashcard",
+    "question": "How many rounds does AES perform with a 192-bit key?",
+    "answer": "AES performs 12 rounds with a 192-bit key."
+  },
+  {
+    "slide_number": 85,
+    "type": "flashcard",
+    "question": "What operations does AES use in its cipher process?",
+    "answer": "AES performs both substitution and transposition (permutation) on the bits."
   },
   {
     "slide_number": 86,
-    "question": "**Q:** How does Alice use RSA encryption and decryption to securely receive a message from Bob?  \n**A:** Alice generates public and private keys using p=181, q=1451 (n=262631, φ(n)=261000). She chooses a public key \\(e_a=154993\\) and calculates the private key \\(d_a=95857\\). Bob encrypts his message using Alice's public key and sends the ciphertext. Alice decrypts it with her private key.",
-    "answer": ""
+    "type": "flashcard",
+    "question": "What is the structure of the state array in AES encryption?",
+    "answer": "The state array is a 4x4 byte matrix."
+  },
+  {
+    "slide_number": 86,
+    "type": "flashcard",
+    "question": "How many bytes does each AES round key have?",
+    "answer": "Each AES round key has 16 bytes (128 bits)."
+  },
+  {
+    "slide_number": 86,
+    "type": "flashcard",
+    "question": "What is the first step in the AES encryption process?",
+    "answer": "The plaintext input is placed into a state array and combined with the zero-th round key."
   },
   {
     "slide_number": 87,
-    "question": "How does Alice decrypt a message using her private key in the confidentiality example from Fall 2024 Cp 571?",
-    "answer": "Alice uses her private key, \\(d = 95857\\), to decrypt numerical values by calculating each value raised to the power of \\(d\\) modulo 262631. This process translates the numbers into letters, revealing the message \"PUPPIES ARE SMALL.\" Only Alice can decrypt the message as she is the only one with access to her private key."
+    "type": "flashcard",
+    "question": "What is the first step in a round of AES encryption?",
+    "answer": "The first step is combining the input with the zero-th round key using an XOR operation, known as AddRoundKey."
+  },
+  {
+    "slide_number": 87,
+    "type": "flashcard",
+    "question": "What operation is used to substitute new values for each byte of the state array in AES encryption?",
+    "answer": "The Rijndael S-box is used in the SubBytes operation to substitute new values for each byte of the state array."
+  },
+  {
+    "slide_number": 87,
+    "type": "flashcard",
+    "question": "How are the contents of rows shifted in the ShiftRows step of AES encryption?",
+    "answer": "The contents of the rows are cyclically shifted by 0, 1, 2, or 3 byte positions, depending on the row number."
   },
   {
     "slide_number": 88,
-    "question": "How does Alice ensure message integrity and authentication when sending \"PUPPIESARESMALL\" to Bob using cryptographic keys?",
-    "answer": "Alice encrypts the message using her private key (da= 95857), resulting in the encrypted output: 072798 259757 256449 089234 037974. Bob then uses Alice's public key (ea= 154993) to decipher the message, ensuring it is from Alice and unchanged."
+    "type": "flashcard",
+    "question": "What is the purpose of the MixColumns step in the AES encryption round?",
+    "answer": "The MixColumns step alters each column independently using matrix multiplication with a known matrix c(x), except in the last round."
+  },
+  {
+    "slide_number": 88,
+    "type": "flashcard",
+    "question": "What operation is performed after the MixColumns step in an AES encryption round?",
+    "answer": "After the MixColumns step, the result is XORed with the round key in the AddRoundKey step."
   },
   {
     "slide_number": 89,
-    "question": "How does Alice send a message with both confidentiality and integrity/authentication using encryption keys?",
-    "answer": "Alice first encrypts the message \"PUPPIESARESMALL\" using her private key (da = 95857) for integrity/authentication, and then encrypts the result with Bob's public key (eb = 45593) for confidentiality. The encrypted message is sent as: 249123 166008 146608 092311 096768."
+    "type": "flashcard",
+    "question": "What are the main steps of AES encryption after the initial round key addition?",
+    "answer": "The main steps of AES encryption after the initial round key addition are SubBytes, ShiftRows, MixColumns, and AddRoundKey."
   },
   {
     "slide_number": 90,
-    "question": "How does Bob ensure both confidentiality and integrity/authentication when receiving a message from Alice in the Fall 2024 Cp 571 example?",
-    "answer": "Bob first deciphers the message using his private key (db=235457) and then with Alice's public key (ea=154993), applying the operations in reverse order to decrypt the received numbers. This process confirms both confidentiality and integrity/authentication, resulting in the message \"PUPPIESARESMALL.\""
+    "type": "flashcard",
+    "question": "What is the first step in the AES decryption round process?",
+    "answer": "Rows are cyclically shifted in inverse rotation using InvShiftRows."
+  },
+  {
+    "slide_number": 90,
+    "type": "flashcard",
+    "question": "How does InvSubBytes work in AES decryption?",
+    "answer": "InvSubBytes reverses the SubBytes operation using S-boxes that are inverse to the ones used in SubBytes."
+  },
+  {
+    "slide_number": 90,
+    "type": "flashcard",
+    "question": "What is the purpose of the InvMixColumns step in AES decryption?",
+    "answer": "InvMixColumns alters each column independently as the inverse of the MixColumn operation, but it is not done in the last round."
   },
   {
     "slide_number": 91,
-    "question": "Why are single characters not encrypted separately in practice, and how are messages typically secured to prevent re-shuffling and other attacks?",
-    "answer": "Single characters are not encrypted separately because they can be broken like classical substitution ciphers. Instead, messages are divided into blocks slightly smaller than n (in bits), padded with random bits, and assigned sequence numbers to prevent re-shuffling. This helps secure the message against attacks, including RSA attacks, where guessing (p-1)(q-1) is as difficult as factoring n = pq."
+    "type": "flashcard",
+    "question": "What is a key design difference between AES and DES?",
+    "answer": "AES was designed to withstand attacks that DES is vulnerable to, and all design decisions of AES are made public."
+  },
+  {
+    "slide_number": 91,
+    "type": "flashcard",
+    "question": "How does AES ensure that every bit in the state array is independent after 2 rounds?",
+    "answer": "After 2 successive rounds, every bit in the AES state array depends on every bit in the state array 2 rounds ago."
+  },
+  {
+    "slide_number": 91,
+    "type": "flashcard",
+    "question": "Does AES have weak or semi-weak keys like DES?",
+    "answer": "No, AES does not have weak or semi-weak keys like DES."
   },
   {
     "slide_number": 92,
-    "question": "Why is RSA not typically used for encrypting large amounts of data, and how is it used in practice instead?",
-    "answer": "RSA is computationally intensive and much slower than symmetric encryption methods like DES/AES, which are at least 100 times faster. In practice, RSA is used to establish a secure connection and exchange a symmetric session key (KS) between parties like Bob and Alice. Once the session key is exchanged, they use symmetric key cryptography for encrypting data, which is more efficient for large amounts of data."
+    "type": "flashcard",
+    "question": "Which modes used with DES are also compatible with AES?",
+    "answer": "DES modes also work with AES."
+  },
+  {
+    "slide_number": 92,
+    "type": "flashcard",
+    "question": "Why are EDE and 'Triple-AES' not used with AES?",
+    "answer": "The extended block size of AES makes EDE and 'Triple-AES' unnecessary."
+  },
+  {
+    "slide_number": 92,
+    "type": "flashcard",
+    "question": "What new mode was added to AES?",
+    "answer": "The new counter mode CTR was added to AES."
   },
   {
     "slide_number": 93,
-    "question": "What is a notable resource for learning about interesting uses of cryptography in technology, as discussed in CPS571 Introduction to Cyber-Security?",
-    "answer": "\"Applied Cryptography\" by Bruce Schneier, second edition, is a key resource for understanding the interesting uses of cryptography in technology, as highlighted in CPS571 Introduction to Cyber-Security."
+    "type": "flashcard",
+    "question": "Who developed Blowfish and when?",
+    "answer": "Blowfish was developed by B. Schneier in 1993."
+  },
+  {
+    "slide_number": 93,
+    "type": "flashcard",
+    "question": "What operations does Blowfish use?",
+    "answer": "Blowfish uses binary addition, XOR function, and 32-bit table lookup."
+  },
+  {
+    "slide_number": 93,
+    "type": "flashcard",
+    "question": "How much memory does Blowfish require and how many rounds are needed for subkey generation?",
+    "answer": "Blowfish fits in 5Kbytes of memory and needs 521 rounds for subkey generation."
+  },
+  {
+    "slide_number": 93,
+    "type": "flashcard",
+    "question": "Why is Blowfish not suitable for frequent key changes?",
+    "answer": "Blowfish is not suitable for frequent key changes due to its complex subkey generation process."
+  },
+  {
+    "slide_number": 93,
+    "type": "flashcard",
+    "question": "What type of cipher is RC4 and how does it operate?",
+    "answer": "RC4 is a stream cipher which operates on bytes, using a key as input in a random number generator and outputting XOR-ed bytes."
+  },
+  {
+    "slide_number": 93,
+    "type": "flashcard",
+    "question": "What is a notable characteristic of RC4 in terms of performance?",
+    "answer": "RC4 runs quickly in software."
   },
   {
     "slide_number": 94,
-    "question": "What is the generalization of RSA called, and how does it work with multiple keys?",
-    "answer": "The generalization of RSA is called Multiple Key RSA (MK-RSA), which uses multiple keys for encryption and decryption. In MK-RSA, the product of keys (K1 * K2 * ... * Kt) satisfies the equation K1 * K2 * ... * Kt mod f(n) = 1, where f(n) = (p-1)(q-1). This allows for flexible encryption and decryption schemes, such as encrypting a message with some keys and decrypting it with others. It is useful in multi-signature scenarios."
+    "type": "flashcard",
+    "question": "What is the Blowfish encryption algorithm known for in terms of licensing?",
+    "answer": "Blowfish is unpatented, license-free, available for all uses, and placed in the public domain."
+  },
+  {
+    "slide_number": 94,
+    "type": "flashcard",
+    "question": "How does Blowfish compare to modern block ciphers in terms of block size?",
+    "answer": "Blowfish has a smaller block size compared to modern block ciphers like AES or Twofish, which have larger block sizes."
+  },
+  {
+    "slide_number": 94,
+    "type": "flashcard",
+    "question": "What was a common issue with encryption algorithms at the time Blowfish was developed?",
+    "answer": "Many encryption algorithms were proprietary, encumbered by patents, or kept as government secrets."
   },
   {
     "slide_number": 95,
-    "question": "How does the multi-signature scheme using RSA-MK work with keys K1, K2, and K3?",
-    "answer": "In the RSA-MK multi-signature scheme, a trusted third party verifies signatures using the public key K3. Alice signs the document M with her key K1, creating M' = M^K1 mod n, and sends it to Bob. Bob recovers M using K2 and K3, and can add his own signature, resulting in M\" = M'^K2 mod n. Anyone can verify both signatures using the public key K3. This scheme relates to the group signature concept."
+    "type": "flashcard",
+    "question": "What is the block size and default key length of the Blowfish algorithm?",
+    "answer": "Blowfish has a 64-bit block size and a default key length of 128 bits."
+  },
+  {
+    "slide_number": 95,
+    "type": "flashcard",
+    "question": "How many rounds of encryption does the Blowfish algorithm use?",
+    "answer": "The Blowfish algorithm uses 16 rounds of encryption."
+  },
+  {
+    "slide_number": 95,
+    "type": "flashcard",
+    "question": "What does the P-array in the Blowfish algorithm contain?",
+    "answer": "The P-array contains 18 instances of 32-bit subkeys."
   },
   {
     "slide_number": 96,
-    "question": "What are the requirements for a timestamp service provided by a trusted third party like Trent?",
-    "answer": "The requirements are: 1) The data must be timestamped independently of its physical medium. 2) Any changes to the document must be detectable. 3) It's impossible to timestamp a document with a date/time other than the current one."
+    "type": "flashcard",
+    "question": "How many subkey arrays does Blowfish have, and what are they?",
+    "answer": "Blowfish has five subkey arrays: one 18-entry P-array and four 256-bit entry S-boxes (S0, S1, S2, and S3)."
+  },
+  {
+    "slide_number": 96,
+    "type": "flashcard",
+    "question": "What size of input and output does each S-box in Blowfish handle?",
+    "answer": "Each S-box in Blowfish is fed by an 8-bit input and produces a 32-bit output."
+  },
+  {
+    "slide_number": 96,
+    "type": "flashcard",
+    "question": "What do the entries in the S-boxes represent in Blowfish?",
+    "answer": "Each line into an S-box in Blowfish represents 32 bits."
   },
   {
     "slide_number": 97,
-    "question": "What are the issues associated with using a trusted third party like Trent for timestamping documents?",
-    "answer": "The issues include privacy concerns since the document, even if encrypted, must be stored in Trent's database, which can become large and waste bandwidth. Additionally, if someone like Trent’s student Trudy colludes with Alice, they can falsify the timestamp."
+    "type": "flashcard",
+    "question": "What is the purpose of the P-array entries in the Blowfish algorithm during encryption?",
+    "answer": "One entry of the P-array is used every round, and after the final round, each half of the data block is XORed with one of the two remaining unused P-entries."
+  },
+  {
+    "slide_number": 97,
+    "type": "flashcard",
+    "question": "How is the input block divided in the Blowfish algorithm?",
+    "answer": "The input block is divided into halves XL and XR."
+  },
+  {
+    "slide_number": 97,
+    "type": "flashcard",
+    "question": "What is the final operation performed on XL and XR after the last round in the Blowfish algorithm?",
+    "answer": "After the last round, XR is XORed with P17, XL is XORed with P18, and then XR and XL are recombined."
   },
   {
     "slide_number": 98,
-    "question": "How does linking timestamps improve the security of a one-way hash solution in document verification?",
-    "answer": "Linking timestamps from different clients creates a chronological sequence, preventing collusion by ensuring that Alice's hash is sandwiched between earlier and later requests, thus embedding it in a tamper-evident timeline."
+    "type": "flashcard",
+    "question": "What does the F function in Blowfish's algorithm do?",
+    "answer": "The F function splits the 32-bit input into four eight-bit quarters, uses these as input to the S-boxes, adds the outputs modulo 232, and XORs them to produce the final 32-bit output."
+  },
+  {
+    "slide_number": 98,
+    "type": "flashcard",
+    "question": "How is decryption performed in Blowfish's algorithm?",
+    "answer": "Decryption in Blowfish is performed by reversing the order of sub-keys Pi and XORing P17 and P18 to the ciphertext block, then using the P-entries in reverse order."
+  },
+  {
+    "slide_number": 98,
+    "type": "flashcard",
+    "question": "What characteristic of Blowfish allows it to be easily inverted?",
+    "answer": "Blowfish is a Feistel network, which allows it to be inverted by simply XORing specific keys to the ciphertext block and using the sub-keys in reverse order."
   },
   {
     "slide_number": 99,
-    "question": "What is a subliminal channel, and why do Alice and Bob need to use one while communicating under Walter's supervision?",
-    "answer": "A subliminal channel is a covert communication method used in full view of an observer. Alice and Bob need to use it to coordinate secretly without Walter detecting their true messages, despite the risk of deception by Walter who can read and potentially alter their communications."
+    "type": "flashcard",
+    "question": "What is the initial step in the Blowfish key expansion process?",
+    "answer": "The initial step is to initialize the P-array and S-boxes with values derived from the hexadecimal digits of pi, which contain no obvious pattern."
+  },
+  {
+    "slide_number": 99,
+    "type": "flashcard",
+    "question": "How is the P-array modified during the Blowfish key expansion?",
+    "answer": "The P-array is XORed with the key bits, circling through the key until the whole P-array is XORed with the key bits."
+  },
+  {
+    "slide_number": 99,
+    "type": "flashcard",
+    "question": "How many times is the process repeated to calculate new subkeys for the P-array and S-boxes in the Blowfish key expansion?",
+    "answer": "The process is repeated 521 times to calculate new subkeys for the P-array and the four S-boxes."
   },
   {
     "slide_number": 100,
-    "question": "What is a subliminal channel in digital communication, and how can it be used to secretly convey information?",
-    "answer": "A subliminal channel in digital communication is a method of covertly embedding information, such as using the number of words in a sentence to represent binary data (odd for \"1\" and even for \"0\"). In the context of digital signatures, Alice can create an innocuous message and sign it using a secret key shared with Bob, embedding the subliminal message within the signature. Walter, who relays the message, cannot detect the hidden information, but Bob can extract it using the shared secret key."
+    "type": "flashcard",
+    "question": "What is the initial step in Blowfish's key schedule?",
+    "answer": "The initial step involves initializing the P-array and S-boxes with values derived from the hexadecimal digits of pi."
+  },
+  {
+    "slide_number": 100,
+    "type": "flashcard",
+    "question": "How is the secret key integrated into Blowfish's key schedule?",
+    "answer": "The secret key is XORed with the P-entries in order, cycling the key if necessary."
+  },
+  {
+    "slide_number": 100,
+    "type": "flashcard",
+    "question": "How many times does the Blowfish algorithm run to generate all the subkeys?",
+    "answer": "The Blowfish algorithm runs 521 times to generate all the subkeys."
   },
   {
     "slide_number": 101,
-    "question": "What is required for implementing a subliminal channel in digital signature algorithms like El Gamal?",
-    "answer": "Detailed knowledge of the actual digital signature algorithm is required for implementing a subliminal channel, and this is deferred to a later occasion."
+    "type": "flashcard",
+    "question": "What is a Feistel cipher and who is it named after?",
+    "answer": "A Feistel cipher is an asymmetric structure used in the construction of block ciphers, named after cryptographer Horst Feistel."
+  },
+  {
+    "slide_number": 101,
+    "type": "flashcard",
+    "question": "Which block ciphers use the Feistel network scheme?",
+    "answer": "Block ciphers that use the Feistel network scheme include the US Data Encryption Standard, the Soviet/Russian GOST, and the more recent Blowfish and Twofish ciphers."
+  },
+  {
+    "slide_number": 101,
+    "type": "flashcard",
+    "question": "How do encryption and decryption work in a Feistel cipher?",
+    "answer": "In a Feistel cipher, encryption and decryption are very similar operations, both consisting of iteratively running a round function a fixed number of times."
   },
   {
     "slide_number": 102,
-    "question": "What is a group signature and what are its key requirements in ensuring privacy?",
-    "answer": "A group signature allows only members of a group to sign messages, enabling verification of the signature's validity without revealing the individual signer. In case of a dispute, the signature can be traced back to the signer. This is useful in contexts like controlling resource use in companies or sending anonymous warnings in vehicular networks."
+    "type": "flashcard",
+    "question": "What is AEdit?",
+    "answer": "AEdit is a free Windows word processor that incorporates text encryption."
+  },
+  {
+    "slide_number": 102,
+    "type": "flashcard",
+    "question": "What functionality does Coolfish provide?",
+    "answer": "Coolfish is an encrypting text editor for Windows."
+  },
+  {
+    "slide_number": 102,
+    "type": "flashcard",
+    "question": "What is the main feature of Foopchat?",
+    "answer": "Foopchat offers encrypted chat and advanced file sharing using a client/server architecture."
+  },
+  {
+    "slide_number": 102,
+    "type": "flashcard",
+    "question": "What platform is JFile by Land-J Technologies designed for?",
+    "answer": "JFile by Land-J Technologies is a database program designed for the PalmOS platform."
+  },
+  {
+    "slide_number": 102,
+    "type": "flashcard",
+    "question": "What services does Freedom by Zero-Knowledge offer privacy for?",
+    "answer": "Freedom by Zero-Knowledge offers privacy for web browsing, e-mail, chat, telnet, and newsgroups."
   },
   {
     "slide_number": 103,
-    "question": "How does a group signature with a trusted third party, like Trent, ensure anonymity and accountability within a group?",
-    "answer": "Trent generates public/private key pairs and gives each group member a unique list of private keys. The master list of public keys is published in random order. Members sign with a private key from their list, and verification uses the master list. In disputes, Trent can match public keys to members, ensuring both anonymity and accountability."
+    "type": "flashcard",
+    "question": "What are the main differences between IDEA and DES encryption algorithms?",
+    "answer": "IDEA was developed to replace DES because DES's 56-bit key size is too small by current standards, making it vulnerable to being searched in approximately 22 hours."
+  },
+  {
+    "slide_number": 103,
+    "type": "flashcard",
+    "question": "Who designed the IDEA encryption algorithm and when?",
+    "answer": "IDEA was designed by Xuejia Lai and James L. Massey in 1991."
+  },
+  {
+    "slide_number": 103,
+    "type": "flashcard",
+    "question": "What was IDEA initially called and what was its purpose?",
+    "answer": "IDEA was initially called IPES (Improved PES) and was developed to replace DES."
+  },
+  {
+    "slide_number": 103,
+    "type": "flashcard",
+    "question": "In what cryptosystem was IDEA used as the symmetric cipher?",
+    "answer": "IDEA was used as the symmetric cipher in early versions of the Pretty Good Privacy cryptosystem."
   },
   {
     "slide_number": 104,
-    "question": "What is an undeniable non-transferable digital signature, and how does it ensure software authenticity for legal buyers?",
-    "answer": "An undeniable non-transferable digital signature allows verification only with the signer's consent, ensuring software authenticity by restricting verification to legal buyers. The process involves: Alice presenting a signature, Bob sending a random number, Alice calculating with her private key, and Bob confirming the result—ensuring only valid signatures are verified."
+    "type": "flashcard",
+    "question": "What is the block size and key size of the IDEA encryption algorithm?",
+    "answer": "IDEA operates with 64-bit plaintext and cipher text blocks and is controlled by a 128-bit key."
+  },
+  {
+    "slide_number": 104,
+    "type": "flashcard",
+    "question": "What three algebraic functions are used in the IDEA algorithm?",
+    "answer": "The IDEA algorithm uses XOR, addition modulo 2^16, and multiplication modulo 2^16 + 1."
+  },
+  {
+    "slide_number": 104,
+    "type": "flashcard",
+    "question": "How does the IDEA algorithm ensure that the encryption process is identical to the decryption process?",
+    "answer": "The IDEA algorithm ensures that the encryption process is identical to the decryption process by using different key sub-blocks."
   },
   {
     "slide_number": 105,
-    "question": "How does Alice sign and Bob verify a message using an undeniable nontransferable digital signature with large prime numbers?",
-    "answer": "Alice signs a message \\( m \\) by computing \\( z = m \\times x \\mod p \\), where \\( x \\) is her private key. Bob verifies the signature by generating random numbers \\( a \\) and \\( b < p \\), sending them to Alice, and receiving \\( d = c \\times t \\mod p \\) back, where \\( c = z \\times a \\times (g^x)^b \\mod p \\) and \\( t = x^{-1} \\mod p \\). Bob confirms the signature if \\( d = m \\times a"
+    "type": "flashcard",
+    "question": "How is a 64-bit plaintext block partitioned in the key generation process?",
+    "answer": "It is partitioned into four 16-bit sub-blocks: X1, X2, X3, X4."
+  },
+  {
+    "slide_number": 105,
+    "type": "flashcard",
+    "question": "How many rounds are there in the IDEA encryption process?",
+    "answer": "There are 8 rounds."
+  },
+  {
+    "slide_number": 105,
+    "type": "flashcard",
+    "question": "How many subkeys does IDEA use, and how are they distributed?",
+    "answer": "IDEA uses 52 subkeys: six for each of the 8 rounds, and the last four are used for output transformation."
   },
   {
     "slide_number": 106,
-    "question": "What are the key rules for the remote coin flipping and guessing game between Alice and Bob?**",
-    "answer": "1) Alice must flip the coin before Bob guesses, 2) Alice cannot re-flip the coin after Bob's guess, and 3) Bob must not know the coin's outcome before guessing. Cryptography can be used to implement this."
+    "type": "flashcard",
+    "question": "How many 16-bit subkeys are generated from a 128-bit key for the first two rounds?",
+    "answer": "For the first round, 6 subkeys and for the second round, 2 subkeys are generated, totaling 8 subkeys."
+  },
+  {
+    "slide_number": 106,
+    "type": "flashcard",
+    "question": "What is the process of generating subkeys after the initial partitioning?",
+    "answer": "The key is rotated 25 bits to the left and divided into 8 subkeys. This process is repeated for 8 rounds until 52 subkeys are generated."
+  },
+  {
+    "slide_number": 106,
+    "type": "flashcard",
+    "question": "How many 16-bit key sub-blocks are generated in total?",
+    "answer": "A total of 52 16-bit key sub-blocks are generated."
   },
   {
     "slide_number": 107,
-    "question": "How does the coin flipping scheme using a hash function work between Alice and Bob, and what ensures its security?",
-    "answer": "In the scheme, Alice and Bob agree on a hash function f. Alice chooses a random number x, computes y=f(x), and sends y to Bob. Bob guesses if x is even or odd. If correct, the flip is 'heads'; otherwise, 'tails.' Alice reveals the result and x; Bob verifies y=f(x). The scheme's security relies on the hash function; if Alice finds both even and odd x with the same hash, she can cheat."
+    "type": "flashcard",
+    "question": "What is the purpose of key sub-blocks in encryption and decryption?",
+    "answer": "Key sub-blocks are used for the encryption and decryption processes in individual rounds of a cryptographic algorithm."
   },
   {
     "slide_number": 108,
-    "question": "How does cryptographic coin flipping work using a commutative algorithm like RSA with identical moduli?",
-    "answer": "In cryptographic coin flipping, Alice and Bob each generate public and private keys. Alice creates two random strings as heads and tails, encrypts them with her public key, and sends them to Bob. Bob randomly selects one, encrypts it with his public key, and sends it back. Alice decrypts it with her private key and sends it back to Bob, who finally decrypts it with his private key to reveal the result. This process ensures neither party can predict or influence the outcome, maintaining fairness."
+    "type": "flashcard",
+    "question": "What operations are used to combine the first four 16-bit key sub-blocks with the plaintext blocks during encryption?",
+    "answer": "Addition modulo 2^16 and multiplication modulo 2^16 + 1."
+  },
+  {
+    "slide_number": 108,
+    "type": "flashcard",
+    "question": "How many 16-bit values are produced at the end of the first encryption round?",
+    "answer": "Four 16-bit values."
+  },
+  {
+    "slide_number": 108,
+    "type": "flashcard",
+    "question": "How many encryption rounds are there in total?",
+    "answer": "There are 8 encryption rounds."
   },
   {
     "slide_number": 109,
-    "question": "How does the cryptographic coin flipping protocol ensure fairness and prevent cheating between Alice and Bob?",
-    "answer": "The protocol ensures fairness as both Alice and Bob decrypt the coin flip result using their private keys, revealing the outcome. They then exchange key pairs, allowing each to verify the other's honesty. This self-enforcing protocol requires no third party, as cheating is immediately detectable, and it can also be used for key exchange, with each bit generated independently."
+    "type": "flashcard",
+    "question": "What is the main difference in the key sub-blocks used for decryption compared to encryption?",
+    "answer": "Each of the 52 16-bit key sub-blocks used for decryption is the inverse of the key sub-block used during encryption."
+  },
+  {
+    "slide_number": 109,
+    "type": "flashcard",
+    "question": "In what order must the key sub-blocks be used during decryption?",
+    "answer": "The key sub-blocks must be used in reverse order during decryption to reverse the encryption process."
   },
   {
     "slide_number": 110,
-    "question": "**Question:** How does the \"Mental Poker\" protocol ensure fair play when Alice and Bob play poker over a distance using encryption?",
-    "answer": "**Answer:** In \"Mental Poker,\" Alice encrypts card messages with her public key and sends them to Bob. Bob randomly selects and encrypts some with his public key, sending them back. Alice decrypts these, and Bob decrypts them to see his hand. Bob then sends more encrypted messages for Alice to decrypt to see her hand. At the end, both reveal their cards and key pairs to verify no cheating occurred."
+    "type": "flashcard",
+    "question": "What are the modes of operation supported by IDEA?",
+    "answer": "IDEA supports Electronic Code Book (ECB) mode, Cipher Block Chaining (CBC), Cipher Feedback (CFB), and Output Feedback (OFB) modes."
+  },
+  {
+    "slide_number": 110,
+    "type": "flashcard",
+    "question": "Why is Electronic Code Book (ECB) mode not recommended for small block sizes?",
+    "answer": "ECB mode is not recommended for small block sizes (smaller than 40 bits) because it encrypts each block of plaintext separately, which can lead to patterns being discernible in the ciphertext."
   },
   {
     "slide_number": 111,
-    "question": "How do Alice, Bob, and Carol securely exchange cards in a mental poker game using public-key cryptography?",
-    "answer": "Each player generates public/private key pairs. Alice encrypts 52 card messages with her public key and sends them to Bob. Bob randomly encrypts 5 cards with his public key and returns them to Alice, then sends the rest to Carol. Carol repeats the encryption process for her selected cards and sends them to Alice. Alice decrypts the cards with her private key and returns them to Bob or Carol, preserving security as none can read the cards initially."
+    "type": "flashcard",
+    "question": "What are some market areas where IDEA-based security solutions are available?",
+    "answer": "Financial Services, Broadcasting, and Government."
+  },
+  {
+    "slide_number": 111,
+    "type": "flashcard",
+    "question": "In which fields can the IDEA algorithm be used for data protection?",
+    "answer": "Audio and video data for cable TV, pay TV, video conferencing, distance learning, sensitive financial and commercial data, email via public networks, and smart cards."
+  },
+  {
+    "slide_number": 111,
+    "type": "flashcard",
+    "question": "How can the IDEA algorithm be utilized in encryption software?",
+    "answer": "It can be easily embedded to protect data transmission and storage."
   },
   {
     "slide_number": 112,
-    "question": "How is fairness ensured in a three-player mental poker game involving Alice, Bob, and Carol?",
-    "answer": "Fairness is ensured by allowing each player to decrypt their own cards with their private keys, revealing their hands. At the end of the game, all players reveal their hands and keys to verify no cheating occurred. Additional cards can be dealt using the same protocol, and if a player wants a card, they can request it from the deck holder."
+    "type": "flashcard",
+    "question": "What was the primary motivation for the development of PGP?",
+    "answer": "The primary motivation for the development of PGP was to achieve maximum security for electronic communications."
+  },
+  {
+    "slide_number": 112,
+    "type": "flashcard",
+    "question": "Which encryption algorithm was initially chosen for PGP to ensure data protection?",
+    "answer": "IDEA was initially chosen for PGP to ensure data protection."
+  },
+  {
+    "slide_number": 112,
+    "type": "flashcard",
+    "question": "What were the fundamental criteria for developing the IDEA encryption algorithm?",
+    "answer": "The fundamental criteria for developing IDEA were military strength for all security requirements and easy hardware and software implementation."
   },
   {
     "slide_number": 113,
-    "question": "What is secret sharing and how is it used to enforce collusion in access control?",
-    "answer": "Secret sharing is a protocol that requires multiple parties to act together to access a secret, ensuring that no single individual can access it alone. For example, in a nuclear missile silo, two people must turn keys simultaneously to launch a missile. This concept can also apply to privacy in medical applications, where a patient and clinicians hold parts of the key needed to access medical records, requiring patient consent to use their part."
+    "type": "flashcard",
+    "question": "What is the course code mentioned on Slide 113?",
+    "answer": "Cp 571"
+  },
+  {
+    "slide_number": 113,
+    "type": "flashcard",
+    "question": "Which semester is referred to in Slide 113?",
+    "answer": "Fall 2024"
   },
   {
     "slide_number": 114,
-    "question": "What is the concept of secret sharing with a threshold using La Grange Interpolating Polynomial, and how is it implemented?",
-    "answer": "Secret sharing with a threshold involves dividing a secret key into 'n' parts, called shadows, and requires 'm' shadows to recover the secret, where m ≤ n. Adi Shamir's scheme uses a polynomial of degree m-1 for m shadows. A prime number 'p' larger than the number of shadows and the secret itself is chosen as public. The polynomial is (ax² + bx + M) mod p, with M as the secret. Coefficients 'a' and 'b' are randomly chosen, kept secret, and discarded after shadows"
+    "type": "flashcard",
+    "question": "What is a potential problem with symmetric ciphers?",
+    "answer": "A potential problem with symmetric ciphers is that they use the same key for both encryption and decryption, which can pose security risks if the key is compromised."
+  },
+  {
+    "slide_number": 114,
+    "type": "flashcard",
+    "question": "Who can be responsible for key selection in symmetric encryption?",
+    "answer": "Key selection can be made by one of the parties involved in the communication or by a trusted third party."
+  },
+  {
+    "slide_number": 114,
+    "type": "flashcard",
+    "question": "What are the methods of key distribution in symmetric encryption?",
+    "answer": "Key distribution may involve physical delivery or electronic delivery using encrypted communication, which requires another key or keys to be already in use."
   },
   {
     "slide_number": 115,
-    "question": "How can you implement a (3,5) threshold scheme to create and reconstruct a shared secret using a polynomial, for example with M=11 and F(x) = (7x² + 8x + 11) mod 13?",
-    "answer": "To implement the (3,5) threshold scheme, evaluate the polynomial F(x) at points x=1 to x=5:  \n- K1 = F(1) = 0  \n- K2 = F(2) = 3  \n- K3 = F(3) = 7  \n- K4 = F(4) = 12  \n- K5 = F(5) = 5  \n\nTo reconstruct"
+    "type": "flashcard",
+    "question": "Why was the NSA able to decrypt the Soviet VENONA traffic?",
+    "answer": "Because the Soviets reused one-time pads that should have been destroyed, allowing the NSA to eventually decrypt the messages."
+  },
+  {
+    "slide_number": 115,
+    "type": "flashcard",
+    "question": "What is a critical security practice when using one-time pads?",
+    "answer": "One-time pads should be destroyed securely after use to prevent reuse and ensure security."
+  },
+  {
+    "slide_number": 115,
+    "type": "flashcard",
+    "question": "What lesson is emphasized about key management in secure communications?",
+    "answer": "Keys must be exchanged, stored, and destroyed securely to maintain the integrity and confidentiality of secure communications."
   },
   {
     "slide_number": 116,
-    "question": "How can a shared secret be reconstructed using cryptographic shadows, and what ensures its security?",
-    "answer": "To reconstruct a shared secret, solve a system of equations using at least three shadows, such as K2, K3, and K5, with a polynomial equation modulo a prime (e.g., (a*x^2 + b*x + M) mod 13). The solution gives values for a, b, and M (e.g., a=7, b=8, M=11). The scheme can scale to more shadows (e.g., 30 shadows with 6 needed to recover the secret). Security is ensured by using random parameters, preventing fewer shadows from revealing the secret."
+    "type": "flashcard",
+    "question": "What is the purpose of a permanent key in computer or smartphone communications?",
+    "answer": "A permanent key is used for important communications and to exchange session keys."
+  },
+  {
+    "slide_number": 116,
+    "type": "flashcard",
+    "question": "What is a session key and how is it used in communication?",
+    "answer": "A session key is a temporary key created for each session, used to encrypt data during that session, and exchanged using a permanent key."
+  },
+  {
+    "slide_number": 116,
+    "type": "flashcard",
+    "question": "Why is it difficult for an eavesdropper to benefit from intercepting a session key?",
+    "answer": "Because a session key is temporary and short-lived, making it difficult to guess and not useful beyond the session it was created for."
   },
   {
     "slide_number": 117,
-    "question": "What is required to generate a patient's key for health measurement and decrypt medical records in a cryptographic system?",
-    "answer": "To generate a patient's key and start health measurement, three shadows are needed: the patient's shadow, the principal clinician's shadow, and the central authority's shadow. To decrypt medical records, shadows from the patient, the principal clinician, and the referring clinician are required."
+    "type": "flashcard",
+    "question": "What is unicity distance in cryptography?",
+    "answer": "Unicity distance is the length of an original ciphertext needed to break the cipher by reducing the number of possible spurious keys to zero in a brute force attack. It is the expected amount of ciphertext needed to determine the key completely, assuming the underlying message has redundancy."
+  },
+  {
+    "slide_number": 117,
+    "type": "flashcard",
+    "question": "Who invented the concept of unicity distance and when?",
+    "answer": "Claude Shannon invented the concept of unicity distance in the 1940s."
+  },
+  {
+    "slide_number": 117,
+    "type": "flashcard",
+    "question": "What factors does the unicity distance depend on?",
+    "answer": "The unicity distance depends on the characteristics of the plaintext and the key length of the encryption algorithm."
   },
   {
     "slide_number": 118,
-    "question": "How can a standard [m,n] secret sharing scheme be modified to detect cheaters, and what role does a prime number play in this modification?",
-    "answer": "To detect cheaters in a standard [m,n] secret sharing scheme, choose a prime number p larger than n and larger than (s-1)(m-1)/e + m, where s is the largest possible secret and e is the probability of successful cheating. Use random numbers between 1 and p-1 for shadow creation instead of sequential numbers. This increases the likelihood that a cheater's false shadow will be detected during secret recovery."
+    "type": "flashcard",
+    "question": "What does the unicity distance represent in cryptanalysis?",
+    "answer": "The unicity distance represents the minimum amount of ciphertext needed to uniquely determine the encryption key."
+  },
+  {
+    "slide_number": 118,
+    "type": "flashcard",
+    "question": "Why is it impossible to decode a message without additional information in a Vigenère cipher?",
+    "answer": "Because multiple keys can produce valid English words from the ciphertext, making it difficult to identify the correct key without additional information."
+  },
+  {
+    "slide_number": 118,
+    "type": "calculation",
+    "question": "How is the unicity distance (U) calculated for a substitution cipher with an entropy of 88.4 bits?",
+    "answer": "The unicity distance (U) is calculated as the entropy of the key space (H(k)) divided by the redundancy (D): U = H(k)/D = 88.4/3.2 = 28 characters."
   },
   {
     "slide_number": 119,
-    "question": "What are some key components in a security toolbox, and how are they used to solve security problems?",
-    "answer": "The security toolbox includes symmetric encryption, message authentication codes, public-key encryption, one-way hash functions, digital signature schemes, and random number generators. These tools are combined into protocols to solve most security problems, though designing correct and resilient protocols is challenging. Advanced protocols like blind signatures, zero knowledge proofs of identity, and subliminal channels are also explored."
+    "type": "flashcard",
+    "question": "What is the title of the course CPS571?",
+    "answer": "Introduction to Cyber-Security"
   },
   {
     "slide_number": 120,
-    "question": "What are some classical and modern cryptography techniques covered in CPS571 Introduction to Cyber-Security?",
-    "answer": "Classical techniques include the Cæsar cipher, Vigenere cipher, substitution, and transposition ciphers. Modern techniques include DES, AES, BlowFish, and a bit of the IDEA algorithm."
+    "type": "flashcard",
+    "question": "What is a message authentication code and why is it important?",
+    "answer": "A message authentication code (MAC) is a short piece of information used to authenticate a message and ensure its integrity and authenticity. It is important because it verifies that the message has not been altered and confirms the sender's identity."
   },
   {
     "slide_number": 121,
-    "question": "What is the core technology of cyberspace that enables security, and why is it important to understand its implications?",
-    "answer": "Cryptography is the core technology of cyberspace, as it allows security to be integrated directly. Understanding its ramifications is crucial, even if not the mathematical details, because it underpins encryption, the oldest application of cryptography."
+    "type": "flashcard",
+    "question": "What is a Message Authentication Code (MAC) used for?",
+    "answer": "A MAC uses a shared secret key and can tell you if a message has been tampered with, but it does not protect privacy."
+  },
+  {
+    "slide_number": 121,
+    "type": "flashcard",
+    "question": "Do MACs protect message privacy?",
+    "answer": "No, MACs do not protect message privacy; they are used to detect message tampering."
+  },
+  {
+    "slide_number": 121,
+    "type": "flashcard",
+    "question": "What is typically used in the creation of a MAC?",
+    "answer": "MACs typically use some kind of hash function."
   },
   {
     "slide_number": 122,
-    "question": "What are the five key ingredients of an encryption scheme?",
-    "answer": "The five key ingredients of an encryption scheme are: 1) Plaintext (the original message), 2) Encryption algorithm (used to encode the plaintext), 3) Secret key(s) (known only to a few parties), 4) Ciphertext (the encoded message), and 5) Decryption algorithm (used to recover the plaintext)."
+    "type": "flashcard",
+    "question": "What is a one-way hash function?",
+    "answer": "A one-way hash function uses a one-way function to produce a message digest or 'fingerprint' that is simple to compute in one direction but infeasible or impossible to reverse."
+  },
+  {
+    "slide_number": 122,
+    "type": "flashcard",
+    "question": "What is a key characteristic of the message digest produced by a one-way hash function?",
+    "answer": "The message digest usually has a fixed length regardless of the length of the input message."
+  },
+  {
+    "slide_number": 122,
+    "type": "flashcard",
+    "question": "Why are cryptographic hash functions preferred over encryption algorithms like DES for certain applications?",
+    "answer": "Cryptographic hash functions execute faster in software than encryption algorithms like DES, and the code is widely available."
   },
   {
     "slide_number": 123,
-    "question": "How can algorithms be classified in cryptography?",
-    "answer": "Algorithms can be classified by the type of operations used for transforming plaintext to ciphertext, the number of keys used (symmetric with a single key or asymmetric with two keys), and the way in which the plaintext is processed."
+    "type": "flashcard",
+    "question": "Where were Unix passwords initially kept?",
+    "answer": "Unix passwords were initially kept in /etc/passwd in plain sight."
+  },
+  {
+    "slide_number": 123,
+    "type": "flashcard",
+    "question": "What is the purpose of adding 'salt' to a password?",
+    "answer": "The 'salt' is a string added to the password before hashing to enhance security."
+  },
+  {
+    "slide_number": 123,
+    "type": "flashcard",
+    "question": "Where are Unix password hashes now kept?",
+    "answer": "Unix password hashes are now kept in /etc/shadow."
   },
   {
     "slide_number": 124,
-    "question": "Why is the secrecy of the key more important than the secrecy of the algorithm in security systems?",
-    "answer": "Because algorithms cannot remain secret due to the need to distribute software and hardware, which can be disassembled. Open algorithms can be scrutinized for correctness, as seen in the case of the Clipper chip with the Skipjack algorithm (1993-1996)."
+    "type": "flashcard",
+    "question": "What is the purpose of a cryptographic checksum?",
+    "answer": "A cryptographic checksum is used to check if a message was changed in transit by generating a set of k bits from a set of n bits, where k is smaller than n except in unusual circumstances."
+  },
+  {
+    "slide_number": 124,
+    "type": "flashcard",
+    "question": "What does the parity bit in ASCII represent?",
+    "answer": "The parity bit in ASCII, which is the 8th bit, is used for error checking. It can represent even parity (even number of 1 bits) or odd parity (odd number of 1 bits)."
   },
   {
     "slide_number": 125,
-    "question": "What is the average time required for an exhaustive key search for different key sizes, assuming a decryption rate of 10^6 decryptions per microsecond?",
-    "answer": "- **32-bit key:** 2.15 milliseconds\n- **56-bit key:** 10 hours\n- **128-bit key:** 5.4 x 10^18 years\n- **168-bit key:** 5.9 x 10^30 years"
+    "type": "flashcard",
+    "question": "What does even parity imply about the number of 1 bits in a correctly received message?",
+    "answer": "Even parity implies that the number of 1 bits in a correctly received message is even."
+  },
+  {
+    "slide_number": 125,
+    "type": "flashcard",
+    "question": "How many 1 bits are in the bit sequence '10111101'?",
+    "answer": "There are 6 1 bits in the bit sequence '10111101'."
+  },
+  {
+    "slide_number": 125,
+    "type": "flashcard",
+    "question": "Why would an odd parity check indicate an error in the bit sequence '10111101'?",
+    "answer": "An odd parity check indicates an error because the sequence '10111101' has an even number of 1 bits, which does not match the odd parity requirement."
   },
   {
     "slide_number": 126,
-    "question": "What are the main differences between symmetric key cryptography and public-key cryptography?",
-    "answer": "In symmetric key cryptography, the sender and receiver use identical keys for both encryption and decryption. In public-key cryptography, the encryption key is public while the decryption key is secret (private)."
+    "type": "flashcard",
+    "question": "What is a cryptographic checksum?",
+    "answer": "A cryptographic checksum is a function h: A->B where for any x in A, h(x)=y is easy to compute, but it is computationally infeasible to find x in A such that h(x) = y for any y in B."
+  },
+  {
+    "slide_number": 126,
+    "type": "flashcard",
+    "question": "What is a collision attack in the context of cryptographic checksums?",
+    "answer": "A collision attack is when it is computationally infeasible to find two different documents x, x' in A such that they have the same hash: h(x) = h(x')."
+  },
+  {
+    "slide_number": 126,
+    "type": "flashcard",
+    "question": "Why is a birthday attack more difficult than a collision attack?",
+    "answer": "A birthday attack is more difficult than a collision attack because the hash of the target document h(x) is given, making it harder to find a different document with the same hash."
   },
   {
     "slide_number": 127,
-    "question": "Who might Bob and Alice represent in real-life scenarios?",
-    "answer": "Bob and Alice can represent parties involved in various electronic exchanges, such as email communication, web browser/server interactions for online purchases, online banking client/server transactions, DNS servers, routers exchanging routing table updates, and more."
+    "type": "flashcard",
+    "question": "What is the minimum number of people required in a room for the probability that any two people share the same birthday to be greater than 0.5?",
+    "answer": "23"
+  },
+  {
+    "slide_number": 127,
+    "type": "flashcard",
+    "question": "What is the probability of two people having the same birthday?",
+    "answer": "1/365"
+  },
+  {
+    "slide_number": 127,
+    "type": "flashcard",
+    "question": "How many people are needed in a room (including yourself) for the probability that someone shares your birthday to be greater than 0.5?",
+    "answer": "253"
   },
   {
     "slide_number": 128,
-    "question": "What are the components of a cryptosystem and the primary goals of cryptography?",
-    "answer": "A cryptosystem consists of a quintuple (E, D, M, K, C), where M is the set of plaintexts, K is the set of keys, C is the set of ciphertexts, E is the set of encryption functions (e: M x K -> C), and D is the set of decryption functions (d: C x K -> M). The primary goal of cryptography is to provide confidentiality, but it can also ensure data integrity, origin authentication, and non-repudiation."
+    "type": "flashcard",
+    "question": "What defines a collision in the context of hash functions?",
+    "answer": "A collision occurs when two different inputs (x and x') produce the same hash output, i.e., h(x) = h(x')."
+  },
+  {
+    "slide_number": 128,
+    "type": "calculation",
+    "question": "If there are 32 files and 8 possible cryptographic checksum values, how many files at minimum will share the same hash value?",
+    "answer": "At least 4 files will share the same hash value."
+  },
+  {
+    "slide_number": 128,
+    "type": "flashcard",
+    "question": "How is the probability of a collision related to the size of the hash?",
+    "answer": "The probability of a collision is inversely proportional to the size of the hash."
   },
   {
     "slide_number": 129,
-    "question": "What is the process of encrypting and decrypting using the Caesar Cipher with a key of 3?",
-    "answer": "In the Caesar Cipher, each letter in the message is shifted by a fixed number of places down the alphabet. For encryption with key 3 (E3), each letter is shifted 3 places forward (e.g., A becomes D). For decryption with key 3 (D3), each letter is shifted 3 places backward (e.g., D becomes A). For example, \"HELLO WORLD\" encrypted with key 3 becomes \"KHOOR ZRUOG\"."
+    "type": "flashcard",
+    "question": "What is a keyed cryptographic checksum and provide an example?",
+    "answer": "A keyed cryptographic checksum requires a cryptographic key to function. An example is using AES in chaining mode to encipher a message and use the last n-bits."
+  },
+  {
+    "slide_number": 129,
+    "type": "flashcard",
+    "question": "Name two keyless cryptographic checksums that are currently in use.",
+    "answer": "SHA-512 and SHA-3 are keyless cryptographic checksums currently in use."
+  },
+  {
+    "slide_number": 129,
+    "type": "flashcard",
+    "question": "What is HMAC and how does it relate to keyless cryptographic checksums?",
+    "answer": "HMAC is a keyless cryptographic checksum that combines a hash function with a key."
   },
   {
     "slide_number": 130,
-    "question": "What are the types of cryptographic attacks, and how do they differ in terms of adversary capabilities?",
-    "answer": "Cryptographic attacks can be categorized into three types in decreasing order of difficulty:  \n1. **Ciphertext-only attack:** The adversary has only the ciphertext and aims to find the plaintext and possibly the key.  \n2. **Known plaintext attack:** The adversary has both the ciphertext and the corresponding plaintext, with the goal of finding the key.  \n3. **Chosen plaintext attack:** The adversary can supply plaintexts and receive the corresponding ciphertexts, aiming to discover the key.  \nA useful plaintext example containing each letter is a pangram like \"a quick brown fox jumps"
+    "type": "flashcard",
+    "question": "What is the digest size of the MD5 hash function?",
+    "answer": "128 bits"
+  },
+  {
+    "slide_number": 130,
+    "type": "flashcard",
+    "question": "What is the block size used by the MD5 hash function?",
+    "answer": "512 bits"
+  },
+  {
+    "slide_number": 130,
+    "type": "flashcard",
+    "question": "Who designed the MD5 hash function and how many rounds does it have?",
+    "answer": "MD5 was designed by Ronald Rivest and it has 4 rounds."
   },
   {
     "slide_number": 131,
-    "question": "What are the two primary types of attacks on cryptography, and how do they differ in approach?",
-    "answer": "The two primary types of attacks on cryptography are mathematical and statistical attacks. Mathematical attacks focus on analyzing the underlying mathematics of cryptographic algorithms, which are public, while keeping the keys secret. Statistical attacks make assumptions about the distribution of elements like letters or letter combinations in plaintext, based on models of specific languages such as English, assuming that the ciphertext will exhibit similar statistical behavior."
+    "type": "flashcard",
+    "question": "What is the fixed-length output of the MD5 algorithm?",
+    "answer": "128 bits"
+  },
+  {
+    "slide_number": 131,
+    "type": "flashcard",
+    "question": "How is the input message processed in the MD5 algorithm?",
+    "answer": "The input message is broken up into chunks of 512-bit blocks, each containing sixteen 32-bit words."
+  },
+  {
+    "slide_number": 131,
+    "type": "flashcard",
+    "question": "What is the main purpose of the 128-bit state in the MD5 algorithm?",
+    "answer": "The 128-bit state, divided into four 32-bit words (A, B, C, and D), is used by the main algorithm to modify the state using each 512-bit message block."
   },
   {
     "slide_number": 132,
-    "question": "What are the two basic types of symmetric ciphers in classical cryptography, and how do they function?",
-    "answer": "The two basic types of symmetric ciphers are transposition ciphers, which rearrange characters in a message using a permutation function as the key, and substitution ciphers, which replace one character with another, like the Caesar cipher, using a mapping table as the key. Both can be attacked by analyzing letter occurrences, and combinations of them are called product ciphers. Modern algorithms perform these operations at the binary level in hardware."
+    "type": "flashcard",
+    "question": "What are A, B, C, and D in the MD5 compression function?",
+    "answer": "A, B, C, and D are 32-bit words of the state."
+  },
+  {
+    "slide_number": 132,
+    "type": "flashcard",
+    "question": "What does '⋘n' denote in the MD5 compression function?",
+    "answer": "'⋘n' denotes a left bit rotation by n places, where n varies for each operation."
+  },
+  {
+    "slide_number": 132,
+    "type": "flashcard",
+    "question": "In the MD5 compression function, what does '⊞' represent?",
+    "answer": "'⊞' denotes addition modulo 2^32."
   },
   {
     "slide_number": 133,
-    "question": "What is a monoalphabetic substitution cipher, and how can it be broken?",
-    "answer": "A monoalphabetic substitution cipher substitutes each letter in the plaintext with a different letter from the alphabet. It can be broken using brute force through permutations or by statistical analysis of letter frequencies."
+    "type": "flashcard",
+    "question": "What is the hash function example mentioned on slide 133?",
+    "answer": "MD5"
+  },
+  {
+    "slide_number": 133,
+    "type": "flashcard",
+    "question": "How many possible functions are there in the MD5 hash function example?",
+    "answer": "Four possible functions."
+  },
+  {
+    "slide_number": 133,
+    "type": "flashcard",
+    "question": "How are the functions used in the MD5 hash function example?",
+    "answer": "A different function is used in each round."
   },
   {
     "slide_number": 134,
-    "question": "What is the Vigenère cipher and how does it mitigate statistical attacks on substitution ciphers?",
-    "answer": "The Vigenère cipher is a polyalphabetic cipher that uses a sequence of keys represented by a string to mitigate statistical attacks on substitution ciphers. It works by combining multiple Caesar ciphers, each key letter shifting the plaintext by a different amount. The key's length is called the period. If the key is short and repeats, the cipher is vulnerable to attack. A one-time pad is a variant where the key is used only once, with a length at least equal to the message."
+    "type": "flashcard",
+    "question": "What is the bit size of the hash value produced by SHA-1?",
+    "answer": "160-bit (20-byte)"
+  },
+  {
+    "slide_number": 134,
+    "type": "flashcard",
+    "question": "Who designed the SHA-1 hash function?",
+    "answer": "The United States National Security Agency (NSA)."
+  },
+  {
+    "slide_number": 134,
+    "type": "flashcard",
+    "question": "Despite being cryptographically broken, where is SHA-1 still widely used?",
+    "answer": "SHA-1 is still used in security applications and protocols like TLS, SSL, PGP, SSH, S/MIME, and IPsec."
   },
   {
     "slide_number": 135,
-    "question": "What is the encryption approach described in Cp 571A for Fall 2024, derived from the Vigenère cipher?",
-    "answer": "The approach involves using n substitution ciphers in a cycling pattern, where each new plaintext symbol is encrypted using the subsequent cipher in the pattern. For instance, with n=4, the pattern might be M1, M3, M4, M3, M2. The encryption key consists of both the substitution ciphers and the cyclic pattern. This method differs from stream ciphers, which encipher each letter independently, and block ciphers, which encipher larger parts of the message as streams of bits."
+    "type": "flashcard",
+    "question": "What are the 32-bit words used in the SHA-1 compression function iteration?",
+    "answer": "The 32-bit words are A, B, C, D, and E."
+  },
+  {
+    "slide_number": 135,
+    "type": "flashcard",
+    "question": "What does the symbol ⋘n denote in the context of SHA-1?",
+    "answer": "⋘n denotes a left bit rotation by n places."
+  },
+  {
+    "slide_number": 135,
+    "type": "flashcard",
+    "question": "What operation does the symbol ⊞ represent in SHA-1?",
+    "answer": "⊞ represents addition modulo 2^32."
   },
   {
     "slide_number": 136,
-    "question": "What is symmetric key cryptography and how do Bob and Alice agree on a key value?",
-    "answer": "Symmetric key cryptography is a method where Bob and Alice share the same key, K, for both encryption and decryption. The challenge is agreeing on the key value, such as a known substitution pattern in a mono-alphabetic substitution cipher, securely."
+    "type": "flashcard",
+    "question": "What is the primary problem that message authentication codes (MAC) aim to solve?",
+    "answer": "The problem is that an attacker can intercept a message, change it, and re-compute the hash."
+  },
+  {
+    "slide_number": 136,
+    "type": "flashcard",
+    "question": "How does HMAC defend against the interception and alteration of messages?",
+    "answer": "HMAC uses keyed cryptographic checksums derived from keyless cryptographic checksums to provide message integrity and authenticity."
+  },
+  {
+    "slide_number": 136,
+    "type": "flashcard",
+    "question": "What are 'ipad' and 'opad' in the context of HMAC?",
+    "answer": "'ipad' is the constant 00110110 repeated b times, and 'opad' is the constant 01011100 repeated b times."
+  },
+  {
+    "slide_number": 136,
+    "type": "flashcard",
+    "question": "Describe the HMAC formula.",
+    "answer": "HMAC is computed as h(k, m) = h(k' xor opad || h(k' xor ipad || m)), where xor denotes exclusive or and || denotes concatenation."
   },
   {
     "slide_number": 137,
-    "question": "What is the Data Encryption Standard (DES) and what are its key features?",
-    "answer": "The Data Encryption Standard (DES) is a block cipher that encrypts 64-bit blocks using a 64-bit user key, outputting 64 bits of ciphertext. It is a product cipher, incorporating both transpositions and substitutions, and operates on bits as its basic unit. The cipher algorithm consists of 16 rounds, with the user's key reduced to 56 bits after dropping parity bits, and each round using a 48-bit key derived from the user's key. DES laid the groundwork for many other ciphers but is not widely used today."
+    "type": "flashcard",
+    "question": "What does the strength of HMAC depend on?",
+    "answer": "The strength of HMAC depends on the strength of the hash function used."
+  },
+  {
+    "slide_number": 137,
+    "type": "flashcard",
+    "question": "Which HMAC versions have known attacks that can recover partial or full keys?",
+    "answer": "HMAC-MD4, HMAC-MD5, HMAC-SHA-0, and HMAC-SHA-1 have known attacks that can recover partial or full keys."
   },
   {
     "slide_number": 138,
-    "question": "How are the 16 round keys (K1 to K16) generated in the Fall 2024 Cp 571 encryption process?",
-    "answer": "The initial key of 56 bits (from a 64-bit key with 8 parity bits removed) is permuted using PC-1. The registers Ci and Di each hold 28 bits, which are left-shifted as specified by the LSH table. These are concatenated, permuted using PC-2, and cut to 48 bits to produce each round key."
+    "type": "flashcard",
+    "question": "What are the key aspects of message integrity in networking?",
+    "answer": "1. Content of message has not been altered. 2. Source of message is who/what you think it is. 3. Message has not been replayed. 4. Sequence of messages is maintained."
+  },
+  {
+    "slide_number": 138,
+    "type": "flashcard",
+    "question": "What is a message digest and why is it important in networking?",
+    "answer": "A message digest is a cryptographic hash function that produces a fixed-size output from input data. It is important for ensuring the integrity and authenticity of messages in networking."
   },
   {
     "slide_number": 139,
-    "question": "What is the process of encipherment in the DES algorithm as described in Fall 2024 Cp 571DES?",
-    "answer": "In DES encipherment, there are 16 rounds each using a different key (Ki). In each round, the right half of the 64-bit input is expanded to 48 bits and XOR-ed with the round key. These 48 bits are divided into 8 sets of 6 bits, processed through S-boxes to produce 32 bits, which are permuted. This process involves initial and inverse initial permutations and utilizes both encryption and decryption steps with Li and Ri as 32-bit halves."
+    "type": "flashcard",
+    "question": "What is an alternative to HMAC for message authentication?",
+    "answer": "Keyed hash, also known as Message Authentication Code (MAC) without encryption."
   },
   {
-    "slide_number": 140,
-    "question": "What is the purpose of the expansion function in the DES algorithm, and how does it transform the data?",
-    "answer": "The expansion function in DES increases the size of the input from 32 bits to 48 bits by expanding Ri–1, allowing it to be XORed with the 48-bit subkey Ki. The output is then processed through S-boxes, which compress the data back to 32 bits."
+    "slide_number": 139,
+    "type": "flashcard",
+    "question": "What does the notation MDm = H(s||m) represent?",
+    "answer": "It represents the computation of a message digest (MDm) using a hash function H, a shared secret key s, and a message m."
   },
   {
-    "slide_number": 141,
-    "question": "What are the different modes of DES encryption covered in Fall 2024 Cp 571DES, and how do they differ?",
-    "answer": "The modes of DES encryption include:  \n- **Electronic Code Book Mode (ECB):** Enciphers each block independently; considered weak.  \n- **Cipher Block Chaining Mode (CBC):** XORs each block with the previous ciphertext block, requiring an initialization vector for the first block.  \n- **Encrypt-Decrypt-Encrypt Mode (2 keys: k, k’):** Used in financial institutions, uses the formula c = DESk(DESk’–1(DESk(m))).  \n- **Encrypt-Encrypt-Encrypt Mode (3 keys: k"
-  },
-  {
-    "slide_number": 142,
-    "question": "What is the process of encryption in CBC mode using DES for multiple message blocks?",
-    "answer": "In CBC mode, each message block is XORed with the previous ciphertext block before being encrypted with DES, starting with an initialization vector for the first block."
-  },
-  {
-    "slide_number": 143,
-    "question": "What led to the replacement of DES with AES, and what is the only approved implementation of DES today?",
-    "answer": "DES was replaced by AES because its design was vulnerable to attacks, including those solved with distributed computing. NIST selected Rijndael as the AES in 2001. The original DES was officially withdrawn in 2005, and the only approved implementation of DES today is Triple DES."
-  },
-  {
-    "slide_number": 144,
-    "question": "What is the Advanced Encryption Standard (AES) and how does it differ from DES in terms of security and structure?",
-    "answer": "AES is a symmetric-key encryption standard that replaces DES. It processes data in 128-bit blocks and can use key sizes of 128, 192, or 256 bits. AES involves at least 10 rounds of encryption, including various transformations like substitution, shifting, and mixing. Unlike DES, AES is much more secure, as brute force decryption that takes 1 second on DES would take 149 trillion years on AES."
-  },
-  {
-    "slide_number": 145,
-    "question": "What are the key features of the Advanced Encryption Standard (AES) block cipher?",
-    "answer": "AES encrypts 128-bit blocks using keys of 128, 192, or 256 bits, producing 128-bit ciphertext. It is a product cipher using bit-level substitution and transposition. AES consists of multiple rounds: 10 rounds for a 128-bit key, 12 for a 192-bit key, and 14 for a 256-bit key, each using a round key derived from the original user-supplied key."
-  },
-  {
-    "slide_number": 146,
-    "question": "How does the AES encryption algorithm initially process the plaintext input?",
-    "answer": "The plaintext input is placed into a state array, which is structured as a 4x4 byte matrix. This state array is then combined with the zero-th round key, which consists of 16 bytes (128 bits)."
-  },
-  {
-    "slide_number": 147,
-    "question": "**Q:** What are the first three steps in an AES encryption round?  \n**A:** 1. Combine the input with the initial round key using XOR (AddRoundKey).  \n2. Substitute new values for each byte of the state array using Rijndael S-box (SubBytes).  \n3. Cyclically shift the contents of each row by 0, 1, 2, or 3 byte positions (ShiftRows).",
-    "answer": ""
-  },
-  {
-    "slide_number": 148,
-    "question": "What are the key steps involved in the AES encryption process during a round, and what is unique about the last round?",
-    "answer": "In an AES encryption round, each column is independently altered using MixColumns through matrix multiplication with a known matrix, followed by XOR with the round key (AddRoundKey). In the last round, MixColumns is not performed, and the state array contains the encrypted input."
-  },
-  {
-    "slide_number": 149,
-    "question": "What are the steps of AES encryption after the initial round key addition?",
-    "answer": "After the initial round key addition, AES encryption involves multiple rounds of four operations: SubBytes, ShiftRows, MixColumns, and AddRoundKey. (Note: The final round omits the MixColumns step.)"
-  },
-  {
-    "slide_number": 150,
-    "question": "What are the key steps involved in the AES decryption process?",
-    "answer": "In AES decryption, the steps include reversing the round key schedule, placing the ciphertext into a state array, and then performing the following operations: InvShiftRows (cyclically shift rows in inverse), InvSubBytes (using inverse S-boxes), AddRoundKey (xor with reversed round key), and InvMixColumns (alter columns independently, not in the last round). After the last round, the state array yields the decrypted input."
-  },
-  {
-    "slide_number": 151,
-    "question": "What are some key improvements of AES over DES in terms of security and transparency?",
-    "answer": "AES is designed to withstand vulnerabilities that affect DES, with all design decisions made public, particularly the S-boxes. AES ensures that after two rounds, every bit in the state array depends on every bit from two rounds ago, and it eliminates weak or semi-weak keys present in DES."
-  },
-  {
-    "slide_number": 152,
-    "question": "What are the key AES modes mentioned, and why is \"Triple-AES\" not used?",
-    "answer": "AES modes include traditional DES modes and a new counter mode called CTR. \"Triple-AES\" isn't used because AES's extended block size makes it unnecessary."
-  },
-  {
-    "slide_number": 153,
-    "question": "What are some alternatives to DES and AES, and what are their characteristics?",
-    "answer": "Alternatives to DES and AES include Blowfish and RC4. Blowfish, developed by B. Schneier in 1993, uses binary addition, XOR function, and 32-bit table lookup, requires 5KB of memory, and 521 rounds for subkey generation, making it unsuitable for frequent key changes. RC4 is a stream cipher operating on bytes, with keys input into a random number generator and outputs XOR-ed with each byte, allowing it to run quickly in software."
-  },
-  {
-    "slide_number": 154,
-    "question": "What are some key characteristics of the Blowfish encryption algorithm?",
-    "answer": "Blowfish is a strong, unpatented, and license-free encryption algorithm available for all uses. It has no effective cryptanalysis to date but is less favored compared to larger block size ciphers like AES or Twofish. It was designed to be public domain and freely usable by anyone."
-  },
-  {
-    "slide_number": 155,
-    "question": "What are the key features and components of the Blowfish encryption algorithm?",
-    "answer": "The Blowfish algorithm has a 64-bit block size and supports a key length from 32 to 448 bits (default 128 bits). It consists of two main parts: key expansion and data encryption. Key expansion involves pre-computing subkeys from the original key into a P-array with 18 subkeys and 4 S-boxes containing 256 entries each. Data encryption is performed in 16 rounds, using a 64-bit input (x) and the P-array (Pi for each iteration)."
-  },
-  {
-    "slide_number": 156,
-    "question": "What is the structure of Blowfish's encryption routine in terms of S-boxes and subkey arrays?",
-    "answer": "Blowfish uses five subkey arrays: one 18-entry P-array and four 256-entry S-boxes (S0, S1, S2, S3). Each S-box is fed by an 8-bit input and produces a 32-bit output."
-  },
-  {
-    "slide_number": 157,
-    "question": "How does the Blowfish encryption algorithm process a data block through its rounds?",
-    "answer": "In the Blowfish algorithm, the input block is divided into two halves, XL and XR. Each round (1 to 16) involves: XL = XL XOR Pi, XR = F(XL) XOR XR, followed by swapping XL and XR. After the final round, the last swap is undone, and the halves are recombined by XORing XR with P17 and XL with P18."
-  },
-  {
-    "slide_number": 158,
-    "question": "How does the Blowfish algorithm's F-function process input for encryption and decryption?",
-    "answer": "The F-function splits a 32-bit input into four 8-bit quarters, uses them as input to S-boxes, then adds modulo 2^32 and XORs the outputs for a 32-bit result. Decryption reverses sub-key order, and since Blowfish is a Feistel network, it inverts by XORing P17 and P18 with the ciphertext and using P-entries in reverse."
-  },
-  {
-    "slide_number": 159,
-    "question": "What are the main steps involved in the key expansion process of the Blowfish algorithm?",
-    "answer": "The key expansion process of the Blowfish algorithm includes: 1) Initializing the P-array and S-boxes with values derived from hexadecimal digits of pi; 2) XORing the P-array with key bits by cycling through the key; 3) Encrypting an all-zero string with Blowfish using the XORed subkeys; 4) Replacing P-array entries with the encryption output; 5) Modifying subkeys with real key bits; 6) Encrypting and replacing subsequent P-array entries; and 7) Repeating the process 521 times to update P-array and S-box"
-  },
-  {
-    "slide_number": 160,
-    "question": "How does the key schedule process work in the Blowfish encryption algorithm?",
-    "answer": "Blowfish's key schedule initializes the P-array and S-boxes with values from π's hexadecimal digits. The secret key is XORed with P-entries, and a 64-bit zero block is encrypted. This ciphertext updates P-array entries iteratively, running the algorithm 521 times to generate all subkeys, processing about 4KB of data."
-  },
-  {
-    "slide_number": 161,
-    "question": "What is a Feistel network and which block ciphers commonly use this structure?",
-    "answer": "A Feistel network is an asymmetric structure used in block cipher construction, named after cryptographer Horst Feistel. It is used in many block ciphers, including the US Data Encryption Standard (DES), Soviet/Russian GOST, Blowfish, and Twofish. In a Feistel cipher, both encryption and decryption involve iteratively running a \"round function\" a fixed number of times."
-  },
-  {
-    "slide_number": 162,
-    "question": "What are some products that utilize Blowfish encryption?",
-    "answer": "Some products using Blowfish encryption include AEdit (a Windows word processor with text encryption), Coolfish (an encrypting text editor for Windows), Foopchat (encrypted chat and file sharing), JFile by Land-J Technologies (a PalmOS database program), and Freedom by Zero-Knowledge (privacy for web browsing, email, chat, telnet, and newsgroups)."
-  },
-  {
-    "slide_number": 163,
-    "question": "What is the International Data Encryption Algorithm (IDEA) and why was it developed?",
-    "answer": "IDEA is a block cipher designed by Xuejia Lai and James L. Massey in 1991 as a minor revision of the Proposed Encryption Standard (PES), originally called IPES. It was developed to replace the DES algorithm, which had become vulnerable due to its small key size. IDEA was used in early versions of the Pretty Good Privacy cryptosystem."
-  },
-  {
-    "slide_number": 164,
-    "question": "What are the key characteristics and operations of the IDEA encryption algorithm?",
-    "answer": "IDEA uses 64-bit blocks and a 128-bit key, combining XOR, addition modulo \\(2^{16}\\), and multiplication modulo \\(2^{16}+1\\) operations. It avoids permutations, S-boxes, and table lookups, with identical encryption and decryption processes using different key sub-blocks."
-  },
-  {
-    "slide_number": 165,
-    "question": "How does the IDEA encryption algorithm handle key generation and subkeys during its rounds?",
-    "answer": "In IDEA, a 64-bit plaintext block is split into four 16-bit sub-blocks (X1, X2, X3, X4) and processed over 8 rounds. The algorithm uses 52 subkeys, with six subkeys per round and the last four subkeys used for output transformation. Subkeys are denoted as Zi(r), where 'r' is the round number and 'i' is the key index within the round."
-  },
-  {
-    "slide_number": 166,
-    "question": "How is a 128-bit key processed to generate subkeys for an 8-round encryption process?",
-    "answer": "The 128-bit key is cyclically shifted left by 25 bits, then divided into eight 16-bit subkeys. For the first round, 6 subkeys are used, and 2 for the second round. This process repeats, generating 52 subkeys across 8 rounds."
-  },
-  {
-    "slide_number": 167,
-    "question": "What is the role of key sub-blocks in encryption and decryption?",
-    "answer": "Key sub-blocks are used for encryption and decryption in individual rounds, as shown in Table 1."
-  },
-  {
-    "slide_number": 168,
-    "question": "How are 16-bit key sub-blocks and plaintext blocks combined in the encryption process described, and what happens at the end of the 8th encryption round?",
-    "answer": "Initially, the first four 16-bit key sub-blocks are combined with two 16-bit plaintext blocks using addition modulo 2¹⁶, and with the other two using multiplication modulo 2¹⁶ + 1. Subkeys Z₅(r) and Z₆(r) further combine input bits. After each of the 8 encryption rounds, four 16-bit values are produced. At the end of the 8th round, these values are combined with the last four of the 52 key sub"
-  },
-  {
-    "slide_number": 169,
-    "question": "What is the main difference in the decryption process compared to encryption in terms of key sub-blocks?**",
-    "answer": "During decryption, each of the 52 16-bit key sub-blocks is the inverse of those used during encryption, and they must be applied in reverse order."
-  },
-  {
-    "slide_number": 170,
-    "question": "What are the modes of operation supported by IDEA, and why is Electronic Code Book (ECB) mode not ideal for small block sizes?",
-    "answer": "IDEA supports modes like Electronic Code Book (ECB), Cipher Block Chaining (CBC), Cipher Feedback (CFB), and Output Feedback (OFB). ECB mode partitions plaintext into blocks and encrypts each separately, but it is not ideal for small block sizes (e.g., less than 40 bits) due to potential security vulnerabilities."
-  },
-  {
-    "slide_number": 171,
-    "question": "Q: What are some applications of the IDEA algorithm in data encryption?  \nA: IDEA is used in security solutions across various sectors, including financial services, broadcasting, and government. It can protect data transmission and storage in areas such as cable TV, pay TV, video conferencing, distance learning, sensitive financial data, email over public networks, and smart cards.",
-    "answer": ""
-  },
-  {
-    "slide_number": 172,
-    "question": "Why was IDEA chosen for data encryption in PGP, and what were its key development criteria?",
-    "answer": "IDEA was chosen for data encryption in PGP due to its design for maximum security, meeting military strength requirements, and ease of hardware and software implementation."
-  },
-  {
-    "slide_number": 173,
-    "question": "Q: What is the course code for the Fall 2024 class?  \nA: Cp 571",
-    "answer": ""
-  },
-  {
-    "slide_number": 174,
-    "question": "**Question:** What is a potential problem with symmetric ciphers, and how can keys be selected and distributed?",
-    "answer": "**Answer:** A problem with symmetric ciphers is the need for secure key distribution, as the same key is used for both encryption and decryption. Keys can be selected by one party or a trusted third party. Distribution may involve physical delivery or electronic delivery using encrypted communication, requiring an existing key or keys."
-  },
-  {
-    "slide_number": 175,
-    "question": "**Question:** Why was the NSA able to decrypt the Soviet VENONA traffic, and what does it teach us about secure key management?",
-    "answer": "**Answer:** The NSA decrypted the Soviet VENONA traffic because the Soviets reused one-time pads that should have been destroyed, violating secure key management principles. This teaches us the importance of exchanging, storing, and destroying keys securely to prevent unauthorized decryption."
-  },
-  {
-    "slide_number": 176,
-    "question": "What are the roles of permanent and session keys in secure communications?",
-    "answer": "Permanent keys are used for important communications and to exchange session keys, which are temporary and created for each session. Session keys enhance security by ensuring eavesdroppers cannot easily exploit short-lived keys."
-  },
-  {
-    "slide_number": 177,
-    "question": "What is unicity distance in cryptography, and how does it relate to breaking a cipher?",
-    "answer": "Unicity distance is the length of ciphertext needed to reduce the number of possible keys to zero in a brute force attack, leaving only one sensible plaintext. It depends on the plaintext's characteristics and the key length of the encryption algorithm, as introduced by Claude Shannon in the 1940s."
-  },
-  {
-    "slide_number": 178,
-    "question": "What is unicity distance in cryptanalysis, and how can it be increased?",
-    "answer": "Unicity distance is the minimum amount of ciphertext needed to uniquely determine the encryption key. It can be increased by reducing redundancy, such as through data compression before encryption, which increases the effective information per character and thus requires more ciphertext for secure decryption."
+    "slide_number": 139,
+    "type": "flashcard",
+    "question": "What are the two main purposes of using a Message Authentication Code (MAC) in the context of keyed hash?",
+    "answer": "To authenticate the sender and verify message integrity."
   }
 ]
-
-function Flashcard({ flashcard }) {
-  const [flipped, setFlipped] = useState(false);
-
+function Flashcard({ flashcard, flipped, setFlipped, animate }) {
   const { transform, opacity } = useSpring({
     opacity: flipped ? 1 : 0,
-    transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+    transform: `rotateY(${flipped ? 180 : 0}deg)`,
     config: { mass: 5, tension: 500, friction: 80 },
+    immediate: !animate, // Disable animation when animate is false
   });
 
   return (
     <div
-      onClick={() => setFlipped(state => !state)}
+      onClick={() => {
+        setFlipped(state => !state);
+      }}
       className="relative w-full max-w-md h-64 mx-auto my-8 cursor-pointer perspective"
     >
       <a.div
@@ -924,8 +2416,8 @@ function Flashcard({ flashcard }) {
         className={`absolute w-full h-full bg-gray-100 text-black flex items-center justify-center 
           backface-hidden border border-gray-400 rounded-lg p-6 shadow-lg`}
         style={{
-          opacity,
-        }}
+          opacity
+                }}
       >
         <p className="text-lg">{flashcard.answer}</p>
       </a.div>
@@ -940,6 +2432,8 @@ function Quiz() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [cards, setCards] = useState(() => shuffleArray(flashcardsData));
+  const [flipped, setFlipped] = useState(false);
+  const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
     if (cards.length > 0 && currentCardIndex >= cards.length) {
@@ -956,10 +2450,22 @@ function Quiz() {
   }, [currentCardIndex, cards, missedQuestions]);
 
   const handleNext = correct => {
+    if (flipped) {
+      // Disable animation and flip back to question side
+      setAnimate(false);
+      setFlipped(false);
+    }
+
     if (!correct) {
       setMissedQuestions(prevMissed => [...prevMissed, cards[currentCardIndex]]);
     }
     setShowAnswer(false);
+
+    // Delay resetting animate to true to ensure immediate flip back
+    setTimeout(() => {
+      setAnimate(true);
+    }, 0);
+
     setCurrentCardIndex(prevIndex => prevIndex + 1);
   };
 
@@ -976,7 +2482,12 @@ function Quiz() {
   return (
     <div className="text-center">
       <h3 className="text-xl font-semibold mb-4">Round {round}</h3>
-      <Flashcard flashcard={cards[currentCardIndex]} />
+      <Flashcard
+        flashcard={cards[currentCardIndex]}
+        flipped={flipped}
+        setFlipped={setFlipped}
+        animate={animate}
+      />
       <div className="mt-4">
         <button
           onClick={() => setShowAnswer(!showAnswer)}
